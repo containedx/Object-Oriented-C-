@@ -9,7 +9,6 @@ add_executable(nothing_bin src/main.cpp)
 target_link_libraries( nothing_bin nothing_lib )
 
 ### test
-#add_subdirectory(../googletest)
 include_directories(../googletest/googletest/include)
 link_directories(../googletest/build/lib)
 
