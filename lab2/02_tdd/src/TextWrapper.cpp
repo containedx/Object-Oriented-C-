@@ -15,3 +15,8 @@ string  TextWrapper::wrap(string str) // space -> new line
     return str;
 }
 
+string TextWrapper::wrapInColums(string str, int chars)//chars == number of chars in column
+{
+   return 0;
+}
+

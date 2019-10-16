@@ -21,3 +21,9 @@ TEST( TextWrapper, OneColumn3characters )
     auto wrapper3 = TextWrapper{};
     EXPECT_EQ("a\nb\nc", wrapper3.wrap("a b c"));
 }
+
+TEST(TextWrapper, TwoColumns)
+{
+    auto wrapper4 = TextWrapper{};
+    EXPECT_EQ("ab\ncd", wrapper4.wrapInColumns("a b c d", 2));
+}
