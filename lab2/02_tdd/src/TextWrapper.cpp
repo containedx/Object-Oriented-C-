@@ -17,9 +17,16 @@ string  TextWrapper::wrap(string str) // space -> new line
 
 string TextWrapper::wrapInColumns(string str, int chars)//chars == number of chars in column
 {
-    int n = str.rfind( ' ', chars+1);
-    if(n) {
-        str.at(n) = '\n';
+
+    //erase spaces:
+    for(int i=0; i<str.length(); i++)
+        if(str.at(i)== ' ')
+            str.erase(i,1);
+
+    // insert new line
+    for(int i=chars; i<str.length(); i+=chars+1)
+    {
+        str.insert(i, "\n");
     }
 
    return str;

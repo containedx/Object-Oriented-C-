@@ -2,13 +2,18 @@
 #include "Dummy.h"
 #include "TextWrapper.h"
 
+
 int main(int argc, char* argv[])
 {
     auto dummy = Dummy{};
-    std::cout << dummy.hello() << std::endl;
+    cout << dummy.hello() << endl;
     
     
     auto x = TextWrapper{};
-    std::cout << x.wrap("ab") << std::endl;
+    cout << x.wrap("ab") << endl;
+    cout << x.wrapInColumns("a b c defghs", 2);
+
+
+
     return 0;
 }
