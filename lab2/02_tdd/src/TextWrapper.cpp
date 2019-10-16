@@ -15,8 +15,13 @@ string  TextWrapper::wrap(string str) // space -> new line
     return str;
 }
 
-string TextWrapper::wrapInColums(string str, int chars)//chars == number of chars in column
+string TextWrapper::wrapInColumns(string str, int chars)//chars == number of chars in column
 {
-   return 0;
+    int n = str.rfind( ' ', chars+1);
+    if(n) {
+        str.at(n) = '\n';
+    }
+
+   return str;
 }
 

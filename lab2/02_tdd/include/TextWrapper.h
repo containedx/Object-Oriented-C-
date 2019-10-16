@@ -12,5 +12,5 @@ class TextWrapper {
 public:
     int columns();
     string wrap(string str);
-    string wrapInColums(string str, int chars);
+    string wrapInColumns(string str, int chars);
 };
