@@ -4,13 +4,14 @@
 #include "TextWrapper.h"
 
 
-int TextWrapper::columns()
+int TextWrapper::columns() //test function
 {
     return 10;
 }
 
-std::string  TextWrapper::wrap(std::string str)
+string  TextWrapper::wrap(string str) // space -> new line
 {
-    std::replace( str.begin(), str.end(), ' ', '\n');
-   return str;
+    replace( str.begin(), str.end(), ' ', '\n');
+    return str;
 }
+

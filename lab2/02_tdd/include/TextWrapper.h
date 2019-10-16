@@ -6,11 +6,10 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
-
 using namespace std;
 
 class TextWrapper {
 public:
     int columns();
-    std::string wrap(std::string str);
+    string wrap(string str);
 };
