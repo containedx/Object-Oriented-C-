@@ -13,5 +13,5 @@ TEST( TextWrapper, HasColumsGetter) {
 TEST( TextWrapper, OneColumn)
 {
     auto wrapper2 = TextWrapper{};
-    EXPECT_EQ("a\nb",wrapper2.wrap("ab"));
+    EXPECT_EQ("a\nb",wrapper2.wrap("a b"));
 }
