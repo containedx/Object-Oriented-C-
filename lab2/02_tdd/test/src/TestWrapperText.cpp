@@ -15,3 +15,9 @@ TEST( TextWrapper, OneColumn)
     auto wrapper2 = TextWrapper{};
     EXPECT_EQ("a\nb",wrapper2.wrap("a b"));
 }
+
+TEST( TextWrapper, OneColumn3characters )
+{
+    auto wrapper3 = TextWrapper{};
+    EXPECT_EQ("a\nb\nc", wrapper3.wrap("a b c"));
+}
