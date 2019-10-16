@@ -27,3 +27,15 @@ TEST(TextWrapper, TwoColumns)
     auto wrapper4 = TextWrapper{};
     EXPECT_EQ("ab\ncd", wrapper4.wrapInColumns("a b c d", 2));
 }
+
+TEST( TextWrapper, ManyColums)
+{
+    auto wrapper5 = TextWrapper{};
+    EXPECT_EQ("ab\ncd\nef\ngh\nij", wrapper5.wrapInColumns("abcd ef ghij",2));
+}
+
+TEST( TextWrapper, ManyColumsX)
+{
+    auto wrapper6 = TextWrapper{};
+    EXPECT_EQ("abcd\nefgh\nij", wrapper6.wrapInColumns("abcd ef ghij",4));
+}
