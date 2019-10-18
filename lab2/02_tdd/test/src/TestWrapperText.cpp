@@ -45,3 +45,10 @@ TEST( TextWrapper, realwrapping )
     auto wrapper7 = TextWrapper{};
     EXPECT_EQ("jakis dlugi tekst\njakis dlugi tekst\njakis dlugi tekst", wrapper7.realtextwrapper("jakis dlugi tekst jakis dlugi tekst jakis dlugi tekst", 20));
 }
+
+TEST( TextWrapper, longtext)
+{
+    auto wrapper8 = TextWrapper{};
+    EXPECT_EQ("Lorem ipsum dolor sit amet, consectetur adipiscing\nelit. Suspendisse ut quam libero. Curabitur eu\npellentesque turpis. Vivamus rhoncus porttitor\norci, eu blandit urna malesuada non. Nulla eget\nsagittis augue, nec commodo arcu. Ut malesuada\nefficitur felis id feugiat. Cras nec consectetur\ndui, eu consectetur nisi. Ut pharetra elementum\nposuere. Mauris suscipit feugiat urna. Etiam\nvitae tellus non odio rutrum porttitor. Praesent\ncommodo aliquet dolor molestie viverra. Nulla\nsollicitudin eu velit sed sagittis. Ut gravida\nfeugiat leo, eget rutrum elit luctus eget. Nullam\nvel enim consectetur, sollicitudin justo dictum,\nullamcorper enim. Phasellus eget mi mauris.\nPraesent ac mauris ut lorem porttitor gravida id\neget mauris. ",
+            wrapper8.realtextwrapper("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut quam libero. Curabitur eu pellentesque turpis. Vivamus rhoncus porttitor orci, eu blandit urna malesuada non. Nulla eget sagittis augue, nec commodo arcu. Ut malesuada efficitur felis id feugiat. Cras nec consectetur dui, eu consectetur nisi. Ut pharetra elementum posuere. Mauris suscipit feugiat urna. Etiam vitae tellus non odio rutrum porttitor. Praesent commodo aliquet dolor molestie viverra. Nulla sollicitudin eu velit sed sagittis. Ut gravida feugiat leo, eget rutrum elit luctus eget. Nullam vel enim consectetur, sollicitudin justo dictum, ullamcorper enim. Phasellus eget mi mauris. Praesent ac mauris ut lorem porttitor gravida id eget mauris. ", 50));
+}

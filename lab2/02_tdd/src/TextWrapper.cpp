@@ -34,6 +34,14 @@ string TextWrapper::wrapInColumns(string str, int chars)//chars == number of cha
 
 string TextWrapper::realtextwrapper( string str, int len)
 {
+    int i=len;
+    for(i; i<str.length(); i+=len) {
 
+        if (str[i] != ' ')
+            while(str[i]!=' ') i--;
+
+        str[i] = '\n';
+    }
+    return str;
 }
 
