@@ -13,4 +13,6 @@ public:
     int columns();
     string wrap(string str);
     string wrapInColumns(string str, int chars);
+    string realtextwrapper( string str, int len);
+
 };

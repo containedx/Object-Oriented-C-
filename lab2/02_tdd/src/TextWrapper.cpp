@@ -32,3 +32,8 @@ string TextWrapper::wrapInColumns(string str, int chars)//chars == number of cha
    return str;
 }
 
+string TextWrapper::realtextwrapper( string str, int len)
+{
+
+}
+

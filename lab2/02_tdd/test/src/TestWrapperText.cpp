@@ -39,3 +39,9 @@ TEST( TextWrapper, ManyColumsX)
     auto wrapper6 = TextWrapper{};
     EXPECT_EQ("abcd\nefgh\nij", wrapper6.wrapInColumns("abcd ef ghij",4));
 }
+
+TEST( TextWrapper, realwrapping )
+{
+    auto wrapper7 = TextWrapper{};
+    EXPECT_EQ("jakis dlugi tekst\njakis dlugi tekst\njakis dlugi tekst", wrapper7.realtextwrapper("jakis dlugi tekst jakis dlugi tekst jakis dlugi tekst", 20));
+}
