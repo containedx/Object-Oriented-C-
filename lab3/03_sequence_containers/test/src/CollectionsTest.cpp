@@ -115,9 +115,21 @@ TEST(VectorFloat, EraseFrontValue) {
 
 TEST(VectorVectorVectorFloat, ThreeDimensionalVector) {
 
-    std::vector<std::vector<float> > vector = { { 1, 2 , 3},
-                                            {4, 5, 6},
-                                             {7, 8, 9} };
+    std::vector<std::vector<std::vector<float> > > vector;
+    float val=1;
+    for(int k=0; k<2; k++)
+    {
+        vector.push_back(std::vector<std::vector<float>>());
+        for(int i=0; i<2; i++)
+        {
+            vector[k].push_back(std::vector<float>());
+            for(int j=0; j<2; j++)
+            {
+                vector[k][i].push_back(val);
+                val ++;
+            }
+        }
+    }
 
     ASSERT_EQ(2u, vector.size());
     ASSERT_EQ(2u, vector[0].size());
