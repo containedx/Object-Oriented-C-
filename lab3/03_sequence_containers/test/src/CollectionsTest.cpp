@@ -15,7 +15,7 @@ TEST(VectorInt, CreateInitialized) {
 
 TEST(VectorDouble, CreateEmptyAndAddValuesAtTheEnd) {
 
-    std::vector<int> vector = {};
+    std::vector<double> vector = {};
 
     ASSERT_EQ(0u, vector.size());
     ASSERT_TRUE(vector.empty());
@@ -31,7 +31,7 @@ TEST(VectorDouble, CreateEmptyAndAddValuesAtTheEnd) {
 
 TEST(VectorFloat, CreateUsingInitializerList) {
 
-    std::vector<int> vector = {10, 20, 30};
+    std::vector<float> vector = {10, 20, 30};
 
     ASSERT_EQ(3u, vector.size());
     EXPECT_FLOAT_EQ(10, vector[0]);
@@ -39,10 +39,11 @@ TEST(VectorFloat, CreateUsingInitializerList) {
     EXPECT_FLOAT_EQ(30, vector[2]);
 }
 
-/*
+
 TEST(VectorInt, SizeShouldBeLessThanOrEqualToCapacity) {
 
-    // TODO: ...
+    std::vector<int> vector = { 1, 2 , 3};
+    std::vector<int>::iterator it;
 
     ASSERT_EQ(3u, vector.size());
     EXPECT_FLOAT_EQ(1, vector[0]);
@@ -50,7 +51,8 @@ TEST(VectorInt, SizeShouldBeLessThanOrEqualToCapacity) {
     EXPECT_FLOAT_EQ(3, vector[2]);
     EXPECT_EQ(vector.capacity(), vector.size());
 
-    // TODO: ...
+    it = vector.begin();
+    it = vector.insert( it, 4);
 
     ASSERT_EQ(4u, vector.size());
     EXPECT_FLOAT_EQ(4, vector[0]);
@@ -64,7 +66,7 @@ TEST(VectorInt, SizeShouldBeLessThanOrEqualToCapacity) {
     ASSERT_EQ(4u, vector.size());
     EXPECT_EQ(vector.capacity(), vector.size());
 }
-
+/*
 TEST(VectorFloat, CopyToOtherVectorUsingAssign) {
 
     // TODO: ...
