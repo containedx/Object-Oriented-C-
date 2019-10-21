@@ -175,10 +175,10 @@ TEST(ArrayInt, SizeDefinedAtCompileTime) {
     ASSERT_EQ(3u, array[2]);
     ASSERT_EQ(4u, array[3]);
 }
-/*
+
 TEST(ArrayInt, Sort) {
 
-    // TODO: ...
+    std::array<int, 5> array = {5, 3, 4, 1, 2};
 
     EXPECT_EQ(5, array[0]);
     EXPECT_EQ(3, array[1]);
@@ -186,7 +186,7 @@ TEST(ArrayInt, Sort) {
     EXPECT_EQ(1, array[3]);
     EXPECT_EQ(2, array[4]);
 
-    // TODO: ...
+    std::sort( std::end(array),std::begin(array), std::greater<>());
 
     EXPECT_EQ(1, array[0]);
     EXPECT_EQ(2, array[1]);
@@ -194,7 +194,7 @@ TEST(ArrayInt, Sort) {
     EXPECT_EQ(4, array[3]);
     EXPECT_EQ(5, array[4]);
 }
-
+/*
 TEST(ArrayChar, CreateCopy) {
 
     // TODO: ...
