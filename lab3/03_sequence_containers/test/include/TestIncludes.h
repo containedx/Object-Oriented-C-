@@ -4,3 +4,4 @@
 #include <list>
 #include <forward_list>
 #include <deque>
+#include <stack>
