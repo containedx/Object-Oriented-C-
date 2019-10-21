@@ -235,7 +235,7 @@ TEST(ListFloat, Sort) {
     ASSERT_EQ(1000, list.size());
     EXPECT_TRUE(std::is_sorted(list.begin(), list.end()));
 }
-/*
+
 TEST(ListInt, MergeSortedLists) {
 
     std::list<int> a = {1,3,5};
@@ -252,7 +252,10 @@ TEST(ListInt, MergeSortedLists) {
     EXPECT_EQ(6, *(iter++));
     EXPECT_EQ(b.end(), iter);
 
-    // TODO: ...
+    a.sort();
+    b.sort();
+    a.merge(b);
+    b.clear();
 
     EXPECT_EQ(0, b.size());
     EXPECT_EQ(6, a.size());
@@ -265,7 +268,7 @@ TEST(ListInt, MergeSortedLists) {
     EXPECT_EQ(6, *(iter++));
     EXPECT_EQ(a.end(), iter);
 }
-
+/*
 TEST(ForwardListFloat, InsertElementAfterIndex) {
 
     // TODO: ...
