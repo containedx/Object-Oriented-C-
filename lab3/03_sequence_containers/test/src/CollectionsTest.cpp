@@ -194,10 +194,10 @@ TEST(ArrayInt, Sort) {
     EXPECT_EQ(4, array[3]);
     EXPECT_EQ(5, array[4]);
 }
-/*
+
 TEST(ArrayChar, CreateCopy) {
 
-    // TODO: ...
+    std::array<char, 5> arrayIn = {'a', 'b', 'c', 'd'};
 
     ASSERT_EQ(5u, arrayIn.size());
     ASSERT_EQ('a', arrayIn[0]);
@@ -207,14 +207,14 @@ TEST(ArrayChar, CreateCopy) {
     ASSERT_EQ('\0', arrayIn[4]);
     EXPECT_STREQ("abcd", arrayIn.data());
 
-    // TODO: ...
+    std::array<char, 5> arrayOut = arrayIn;
 
     ASSERT_EQ(5u, arrayIn.size());
     EXPECT_STREQ("abcd", arrayIn.data());
     ASSERT_EQ(5u, arrayOut.size());
     EXPECT_STREQ("abcd", arrayOut.data());
 }
-
+/*
 TEST(ListFloat, Sort) {
 
     // TODO: ...
