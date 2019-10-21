@@ -268,10 +268,11 @@ TEST(ListInt, MergeSortedLists) {
     EXPECT_EQ(6, *(iter++));
     EXPECT_EQ(a.end(), iter);
 }
-/*
+
 TEST(ForwardListFloat, InsertElementAfterIndex) {
 
-    // TODO: ...
+   std::forward_list<float> forwardList = {1,2,3,4};
+
 
     auto iter = forwardList.begin();
     EXPECT_EQ(1, *(iter++));
@@ -280,7 +281,9 @@ TEST(ForwardListFloat, InsertElementAfterIndex) {
     EXPECT_EQ(4, *(iter++));
     EXPECT_EQ(forwardList.end(), iter);
 
-    // TODO: ...
+    auto it = forwardList.begin(); it++;
+    forwardList.insert_after(it, 10);
+
 
     iter = forwardList.begin();
     EXPECT_EQ(1, *(iter++));
@@ -290,7 +293,7 @@ TEST(ForwardListFloat, InsertElementAfterIndex) {
     EXPECT_EQ(4, *(iter++));
     EXPECT_EQ(forwardList.end(), iter);
 }
-
+/*
 TEST(DequeInt, RemoveFirstElement) {
 
     // TODO: ...
