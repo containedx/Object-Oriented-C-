@@ -148,16 +148,16 @@ TEST(VectorVectorVectorFloat, ThreeDimensionalVector) {
     EXPECT_FLOAT_EQ(7, vector[1][1][0]);
     EXPECT_FLOAT_EQ(8, vector[1][1][1]);
 }
-/*
+
 TEST(ArrayInt, FillWithTheSameValue) {
 
-    // TODO: ...
+    std::array<int, 1000> array = {0};
 
     for (auto i = 0u; i < 1000; i++) {
         ASSERT_EQ(0, array[i]);
     }
 
-    // TODO: ...
+    array.fill(7);
 
     for (auto i = 0u; i < 1000; i++) {
         ASSERT_EQ(7, array[i]);
@@ -166,7 +166,7 @@ TEST(ArrayInt, FillWithTheSameValue) {
 
 TEST(ArrayInt, SizeDefinedAtCompileTime) {
 
-    // TODO: ...
+    std::array<int, 4> array = {1, 2, 3, 4};
 
     static_assert(array.size() == 4, "Compilation error: wrong array size");
 
@@ -175,7 +175,7 @@ TEST(ArrayInt, SizeDefinedAtCompileTime) {
     ASSERT_EQ(3u, array[2]);
     ASSERT_EQ(4u, array[3]);
 }
-
+/*
 TEST(ArrayInt, Sort) {
 
     // TODO: ...
