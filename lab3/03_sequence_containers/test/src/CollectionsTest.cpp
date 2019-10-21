@@ -194,7 +194,7 @@ TEST(ArrayInt, Sort) {
     EXPECT_EQ(4, array[3]);
     EXPECT_EQ(5, array[4]);
 }
-/*
+
 TEST(ArrayChar, CreateCopy) {
 
     std::array<char, 5> arrayIn = {'a', 'b', 'c', 'd'};
@@ -218,7 +218,7 @@ TEST(ArrayChar, CreateCopy) {
 TEST(ListFloat, Sort) {
 
     std::list<float> list;
-    list.resize(1000);
+
     for(int i=0; i<1000;i++)
     { //random values
         if(i%2)
@@ -235,7 +235,7 @@ TEST(ListFloat, Sort) {
     ASSERT_EQ(1000, list.size());
     EXPECT_TRUE(std::is_sorted(list.begin(), list.end()));
 }
-
+/*
 TEST(ListInt, MergeSortedLists) {
 
     std::list<int> a = {1,3,5};
