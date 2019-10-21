@@ -186,7 +186,7 @@ TEST(ArrayInt, Sort) {
     EXPECT_EQ(1, array[3]);
     EXPECT_EQ(2, array[4]);
 
-    std::sort( std::end(array),std::begin(array), std::greater<>());
+    std::sort(array.begin(), array.end());
 
     EXPECT_EQ(1, array[0]);
     EXPECT_EQ(2, array[1]);
@@ -194,7 +194,7 @@ TEST(ArrayInt, Sort) {
     EXPECT_EQ(4, array[3]);
     EXPECT_EQ(5, array[4]);
 }
-
+/*
 TEST(ArrayChar, CreateCopy) {
 
     std::array<char, 5> arrayIn = {'a', 'b', 'c', 'd'};
@@ -265,7 +265,7 @@ TEST(ListInt, MergeSortedLists) {
     EXPECT_EQ(6, *(iter++));
     EXPECT_EQ(a.end(), iter);
 }
-/*
+
 TEST(ForwardListFloat, InsertElementAfterIndex) {
 
     // TODO: ...
