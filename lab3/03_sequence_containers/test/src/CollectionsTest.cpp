@@ -44,6 +44,7 @@ TEST(VectorInt, SizeShouldBeLessThanOrEqualToCapacity) {
 
     std::vector<int> vector = { 1, 2 , 3};
     std::vector<int>::iterator it;
+    vector.reserve(3);
 
     ASSERT_EQ(3u, vector.size());
     EXPECT_FLOAT_EQ(1, vector[0]);
@@ -51,6 +52,7 @@ TEST(VectorInt, SizeShouldBeLessThanOrEqualToCapacity) {
     EXPECT_FLOAT_EQ(3, vector[2]);
     EXPECT_EQ(vector.capacity(), vector.size());
 
+    vector.reserve(4);
     it = vector.begin();
     it = vector.insert( it, 4);
 
@@ -61,7 +63,7 @@ TEST(VectorInt, SizeShouldBeLessThanOrEqualToCapacity) {
     EXPECT_FLOAT_EQ(3, vector[3]);
     EXPECT_GE(vector.capacity(), vector.size());
 
-    // TODO: ...
+    vector.reserve(4);
 
     ASSERT_EQ(4u, vector.size());
     EXPECT_EQ(vector.capacity(), vector.size());
