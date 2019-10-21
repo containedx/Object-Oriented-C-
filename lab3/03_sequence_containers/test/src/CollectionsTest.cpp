@@ -28,10 +28,10 @@ TEST(VectorDouble, CreateEmptyAndAddValuesAtTheEnd) {
     EXPECT_DOUBLE_EQ(17, vector[2]);
 }
 
-/*
+
 TEST(VectorFloat, CreateUsingInitializerList) {
 
-    // TODO: ...
+    std::vector<int> vector = {10, 20, 30};
 
     ASSERT_EQ(3u, vector.size());
     EXPECT_FLOAT_EQ(10, vector[0]);
@@ -39,6 +39,7 @@ TEST(VectorFloat, CreateUsingInitializerList) {
     EXPECT_FLOAT_EQ(30, vector[2]);
 }
 
+/*
 TEST(VectorInt, SizeShouldBeLessThanOrEqualToCapacity) {
 
     // TODO: ...
