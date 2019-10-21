@@ -5,3 +5,4 @@
 #include <forward_list>
 #include <deque>
 #include <stack>
+#include <queue>
