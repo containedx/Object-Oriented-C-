@@ -1,4 +1,4 @@
-set(GOOGLETEST ../../googletest)
+set(GOOGLETEST ../../../../googletest)
 
 include_directories(${GOOGLETEST}/googletest/include)
 link_directories(${GOOGLETEST}/build/lib)
