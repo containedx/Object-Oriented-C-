@@ -214,20 +214,28 @@ TEST(ArrayChar, CreateCopy) {
     ASSERT_EQ(5u, arrayOut.size());
     EXPECT_STREQ("abcd", arrayOut.data());
 }
-/*
+
 TEST(ListFloat, Sort) {
 
-    // TODO: ...
+    std::list<float> list;
+    list.resize(1000);
+    for(int i=0; i<1000;i++)
+    { //random values
+        if(i%2)
+            list.push_back(i+10);
+        else
+            list.push_back(i-30);
+    }
 
     ASSERT_EQ(1000, list.size());
     EXPECT_FALSE(std::is_sorted(list.begin(), list.end()));
 
-    // TODO: ...
+    list.sort();
 
     ASSERT_EQ(1000, list.size());
     EXPECT_TRUE(std::is_sorted(list.begin(), list.end()));
 }
-
+/*
 TEST(ListInt, MergeSortedLists) {
 
     // TODO: ...
