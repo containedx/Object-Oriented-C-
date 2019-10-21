@@ -68,10 +68,12 @@ TEST(VectorInt, SizeShouldBeLessThanOrEqualToCapacity) {
     ASSERT_EQ(4u, vector.size());
     EXPECT_EQ(vector.capacity(), vector.size());
 }
-/*
+
 TEST(VectorFloat, CopyToOtherVectorUsingAssign) {
 
-    // TODO: ...
+    std::vector<float> input = {1, 2, 3};
+
+    std:: vector<float> output = {};
 
     ASSERT_EQ(3u, input.size());
     EXPECT_EQ(1, input[0]);
@@ -80,7 +82,9 @@ TEST(VectorFloat, CopyToOtherVectorUsingAssign) {
 
     ASSERT_TRUE(output.empty());
 
-    // TODO: ...
+
+    output.assign(input.begin()+1, input.end());
+
 
     ASSERT_EQ(2u, output.size());
     EXPECT_EQ(2, output[0]);
@@ -92,6 +96,7 @@ TEST(VectorFloat, CopyToOtherVectorUsingAssign) {
     EXPECT_EQ(3, input[2]);
 }
 
+/*
 TEST(VectorFloat, EraseFrontValue) {
 
     // TODO: ...
