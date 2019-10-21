@@ -112,10 +112,12 @@ TEST(VectorFloat, EraseFrontValue) {
     EXPECT_FLOAT_EQ(2, vector[0]);
     EXPECT_FLOAT_EQ(3, vector[1]);
 }
-/*
+
 TEST(VectorVectorVectorFloat, ThreeDimensionalVector) {
 
-    // TODO: ...
+    std::vector<std::vector<float> > vector = { { 1, 2 , 3},
+                                            {4, 5, 6},
+                                             {7, 8, 9} };
 
     ASSERT_EQ(2u, vector.size());
     ASSERT_EQ(2u, vector[0].size());
@@ -134,7 +136,7 @@ TEST(VectorVectorVectorFloat, ThreeDimensionalVector) {
     EXPECT_FLOAT_EQ(7, vector[1][1][0]);
     EXPECT_FLOAT_EQ(8, vector[1][1][1]);
 }
-
+/*
 TEST(ArrayInt, FillWithTheSameValue) {
 
     // TODO: ...
