@@ -235,10 +235,11 @@ TEST(ListFloat, Sort) {
     ASSERT_EQ(1000, list.size());
     EXPECT_TRUE(std::is_sorted(list.begin(), list.end()));
 }
-/*
+
 TEST(ListInt, MergeSortedLists) {
 
-    // TODO: ...
+    std::list<int> a = {1,3,5};
+    std::list<int> b = {2,4,6};
 
     auto iter = a.begin();
     EXPECT_EQ(1, *(iter++));
@@ -264,7 +265,7 @@ TEST(ListInt, MergeSortedLists) {
     EXPECT_EQ(6, *(iter++));
     EXPECT_EQ(a.end(), iter);
 }
-
+/*
 TEST(ForwardListFloat, InsertElementAfterIndex) {
 
     // TODO: ...
