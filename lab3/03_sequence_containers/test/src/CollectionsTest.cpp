@@ -12,15 +12,15 @@ TEST(VectorInt, CreateInitialized) {
     EXPECT_EQ(3, vector[2]);
 }
 
-/*
+
 TEST(VectorDouble, CreateEmptyAndAddValuesAtTheEnd) {
 
-    // TODO: ...
+    std::vector<int> vector = {};
 
     ASSERT_EQ(0u, vector.size());
     ASSERT_TRUE(vector.empty());
 
-    // TODO: ...
+   vector = {11, 13, 17};
 
     ASSERT_EQ(3u, vector.size());
     EXPECT_DOUBLE_EQ(11, vector[0]);
@@ -28,6 +28,7 @@ TEST(VectorDouble, CreateEmptyAndAddValuesAtTheEnd) {
     EXPECT_DOUBLE_EQ(17, vector[2]);
 }
 
+/*
 TEST(VectorFloat, CreateUsingInitializerList) {
 
     // TODO: ...
