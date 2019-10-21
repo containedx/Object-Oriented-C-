@@ -96,23 +96,23 @@ TEST(VectorFloat, CopyToOtherVectorUsingAssign) {
     EXPECT_EQ(3, input[2]);
 }
 
-/*
+
 TEST(VectorFloat, EraseFrontValue) {
 
-    // TODO: ...
+    std::vector<float> vector = { 1, 2 , 3};
 
     ASSERT_EQ(3u, vector.size());
     EXPECT_FLOAT_EQ(1, vector[0]);
     EXPECT_FLOAT_EQ(2, vector[1]);
     EXPECT_FLOAT_EQ(3, vector[2]);
 
-    // TODO: ...
+   vector.erase(vector.begin());
 
     ASSERT_EQ(2u, vector.size());
     EXPECT_FLOAT_EQ(2, vector[0]);
     EXPECT_FLOAT_EQ(3, vector[1]);
 }
-
+/*
 TEST(VectorVectorVectorFloat, ThreeDimensionalVector) {
 
     // TODO: ...
