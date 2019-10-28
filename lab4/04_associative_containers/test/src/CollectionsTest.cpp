@@ -228,17 +228,23 @@ TEST(MapStringString, CreateUsingInitializerList) {
     EXPECT_EQ("Greece", map["GR"]);
     EXPECT_EQ("France", map["FR"]);
 }
-/*
+
 TEST(MapMapStringInt, NestedCollections) {
 
-    // TODO: ....
+    map <string, map <string, int> > map{};
+
 
     ASSERT_TRUE(map.empty());
 
-    // TODO: ....
+    map["count"]["count"] = 1 ;
 
     ASSERT_EQ(1u, map.size());
     ASSERT_EQ(1u, map.count("count"));
+
+    map["count"]["1"] = 12 ;
+    map["count"]["2"] = 4 ;
+    map["count"]["3"] = 3 ;
+    map["count"]["4"] = 7 ;
 
     ASSERT_EQ(4u, map["count"].size());
     EXPECT_EQ(12, map["count"]["1"]);
@@ -246,7 +252,7 @@ TEST(MapMapStringInt, NestedCollections) {
     EXPECT_EQ(2, map["count"]["3"]);
     EXPECT_EQ(7, map["count"]["4"]);
 }
-
+/*
 TEST(MultisetInt, RemoveRangeOfElements) {
 
     // TODO: ....
