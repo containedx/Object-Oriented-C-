@@ -113,26 +113,29 @@ TEST(SetInt, InvalidComparatorThatCausesOnlyOneElementToBeInserted) {
 
     ASSERT_EQ(1u, set.size());
 }
-/*
+
 TEST(SetInt, InvalidComparatorThatCausesMultipleCopiesOfTheSameElementToBeInserted) {
 
     struct Comparator {
-        // TODO: ....
+        bool operator()(const int& a, const int&b) const
+        {
+            return true;
+        }
     };
 
-    // TODO: ....
+    set<int, Comparator> set{};
 
     ASSERT_TRUE(set.empty());
 
-    // TODO: ....
+    set.insert(1);
 
     ASSERT_EQ(1u, set.size());
 
-    // TODO: ....
+    set.insert(2);
 
     ASSERT_EQ(2u, set.size());
 }
-
+/*
 TEST(SetValue, CustomTypeAndComparator) {
 
     struct Value {
