@@ -236,14 +236,14 @@ TEST(MapMapStringInt, NestedCollections) {
 
     ASSERT_TRUE(map.empty());
 
-    map["count"]["count"] = 1 ;
+    map["count"]["1"] = 12 ;
 
     ASSERT_EQ(1u, map.size());
     ASSERT_EQ(1u, map.count("count"));
 
-    map["count"]["1"] = 12 ;
+
     map["count"]["2"] = 4 ;
-    map["count"]["3"] = 3 ;
+    map["count"]["3"] = 2 ;
     map["count"]["4"] = 7 ;
 
     ASSERT_EQ(4u, map["count"].size());
