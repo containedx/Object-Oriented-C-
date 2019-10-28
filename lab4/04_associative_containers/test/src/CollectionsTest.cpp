@@ -22,27 +22,29 @@ TEST(SetInt, RemoveElements) {
     EXPECT_EQ(0u, set.count(2));
     EXPECT_EQ(1u, set.count(3));
 }
-/*
+
 TEST(SetDouble, ElementsSortedWhenIterating) {
 
-    // TODO: ....
+    set <double> set;
 
     ASSERT_TRUE(set.empty());
 
-    // TODO: ....
+    set.insert(3.3);
+    set.insert(2.2);
 
     ASSERT_EQ(2u, set.size());
     EXPECT_EQ(1u, set.count(3.3));
     EXPECT_EQ(1u, set.count(2.2));
 
-    // TODO: ....
+    set.insert(4.4);
+    set.insert(1.1);
     ASSERT_EQ(4u, set.size());
     EXPECT_EQ(1u, set.count(3.3));
     EXPECT_EQ(1u, set.count(2.2));
     EXPECT_EQ(1u, set.count(4.4));
     EXPECT_EQ(1u, set.count(1.1));
 
-    // TODO: ....
+    set.insert(0.0);
 
     auto iter = set.begin();
     EXPECT_EQ(0.0, *iter++);
@@ -52,7 +54,7 @@ TEST(SetDouble, ElementsSortedWhenIterating) {
     EXPECT_EQ(4.4, *iter++);
     EXPECT_EQ(set.end(), iter);
 }
-
+/*
 TEST(SetString, ElementsSortedInReversedAplhabeticalOrderWhenIterating) {
 
     struct Comparator {
