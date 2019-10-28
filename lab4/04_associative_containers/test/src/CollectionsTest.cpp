@@ -135,40 +135,50 @@ TEST(SetInt, InvalidComparatorThatCausesMultipleCopiesOfTheSameElementToBeInsert
 
     ASSERT_EQ(2u, set.size());
 }
-/*
+
 TEST(SetValue, CustomTypeAndComparator) {
 
     struct Value {
-        // TODO: ....
+        int a;
+        int b;
     };
 
     struct Comparator {
-        // TODO: ....
+        bool operator()(const Value& a, const Value& b) const
+        {
+            if(a.a > b.a)
+                return true;
+            else if(a.a == b.a)
+                if(a.b < b.b)
+                     return true;
+            else
+                return false;
+        }
     };
 
-    // TODO: ....
+    set < Value, Comparator > set {};
 
     ASSERT_TRUE(set.empty());
 
-    // TODO: ....
+    set.insert(Value{3,0});
 
     ASSERT_EQ(1u, set.size());
     EXPECT_EQ(1u, set.count(Value{3, 0}));
 
-    // TODO: ....
+    set.insert(Value{6,0});
 
     ASSERT_EQ(2u, set.size());
     EXPECT_EQ(1u, set.count(Value{3, 0}));
     EXPECT_EQ(1u, set.count(Value{6, 0}));
 
-    // TODO: ....
+    set.insert(Value{3,3});
 
     ASSERT_EQ(3u, set.size());
     EXPECT_EQ(1u, set.count(Value{3, 0}));
     EXPECT_EQ(1u, set.count(Value{6, 0}));
     EXPECT_EQ(1u, set.count(Value{3, 3}));
 
-    // TODO: ....
+    set.insert(Value{6,6});
 
     ASSERT_EQ(4u, set.size());
     EXPECT_EQ(1u, set.count(Value{3, 0}));
@@ -176,7 +186,7 @@ TEST(SetValue, CustomTypeAndComparator) {
     EXPECT_EQ(1u, set.count(Value{3, 3}));
     EXPECT_EQ(1u, set.count(Value{6, 6}));
 }
-
+/*
 TEST(SetInt, ElementsGreaterThanGivenValue) {
 
     // TODO: ....
