@@ -1,5 +1,6 @@
 #include "TestIncludes.h"
 #include <set>
+#include <map>
 
 using namespace std;
 
@@ -213,17 +214,21 @@ TEST(SetInt, ElementsGreaterThanGivenValue) {
     EXPECT_EQ(5, *iter++);
     EXPECT_EQ(set.end(), iter);
 }
-/*
+
 TEST(MapStringString, CreateUsingInitializerList) {
 
-    // TODO: ....
+    map <string, string> map{};
+
+    map.insert({"CN", "China"});
+    map.insert({"GR", "Greece"});
+    map.insert({"FR", "France"});
 
     ASSERT_EQ(3u, map.size());
     EXPECT_EQ("China", map["CN"]);
     EXPECT_EQ("Greece", map["GR"]);
     EXPECT_EQ("France", map["FR"]);
 }
-
+/*
 TEST(MapMapStringInt, NestedCollections) {
 
     // TODO: ....
