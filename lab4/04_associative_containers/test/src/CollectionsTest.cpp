@@ -186,10 +186,16 @@ TEST(SetValue, CustomTypeAndComparator) {
     EXPECT_EQ(1u, set.count(Value{3, 3}));
     EXPECT_EQ(1u, set.count(Value{6, 6}));
 }
-/*
+
 TEST(SetInt, ElementsGreaterThanGivenValue) {
 
-    // TODO: ....
+    set <int, less <int> > set{};
+
+    set.insert(3);
+    set.insert(4);
+    set.insert(5);
+    set.insert(1);
+    set.insert(2);
 
     ASSERT_EQ(5u, set.size());
     EXPECT_EQ(1u, set.count(1));
@@ -198,14 +204,16 @@ TEST(SetInt, ElementsGreaterThanGivenValue) {
     EXPECT_EQ(1u, set.count(4));
     EXPECT_EQ(1u, set.count(5));
 
-    // TODO: ....
+    auto iter = set.begin();
+    *iter++;
+    *iter++;
 
     EXPECT_EQ(3, *iter++);
     EXPECT_EQ(4, *iter++);
     EXPECT_EQ(5, *iter++);
     EXPECT_EQ(set.end(), iter);
 }
-
+/*
 TEST(MapStringString, CreateUsingInitializerList) {
 
     // TODO: ....
