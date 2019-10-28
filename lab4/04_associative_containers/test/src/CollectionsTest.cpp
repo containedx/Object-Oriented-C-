@@ -89,26 +89,31 @@ TEST(SetString, ElementsSortedInReversedAplhabeticalOrderWhenIterating) {
     EXPECT_EQ(set.end(), iter);
 
 }
-/*
+
 TEST(SetInt, InvalidComparatorThatCausesOnlyOneElementToBeInserted) {
 
     struct Comparator {
-        // TODO: ....
+        bool operator()(const int& a, const int&b) const
+        {
+            return false;
+        }
     };
 
-    // TODO: ....
+    set <int, Comparator> set{};
+
 
     ASSERT_TRUE(set.empty());
 
-    // TODO: ....
+    set.insert(1);
 
     ASSERT_EQ(1u, set.size());
 
-    // TODO: ....
+    set.insert(33);
+    set.insert(43);
 
     ASSERT_EQ(1u, set.size());
 }
-
+/*
 TEST(SetInt, InvalidComparatorThatCausesMultipleCopiesOfTheSameElementToBeInserted) {
 
     struct Comparator {
