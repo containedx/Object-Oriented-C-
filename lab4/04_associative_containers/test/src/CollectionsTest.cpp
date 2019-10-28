@@ -54,14 +54,22 @@ TEST(SetDouble, ElementsSortedWhenIterating) {
     EXPECT_EQ(4.4, *iter++);
     EXPECT_EQ(set.end(), iter);
 }
-/*
+
 TEST(SetString, ElementsSortedInReversedAplhabeticalOrderWhenIterating) {
 
     struct Comparator {
-        // TODO: ....
+        bool operator()(const string& a, const string& b) const
+        {
+            return a > b? true : false;
+        }
     };
 
-    // TODO: ....
+    set <string, Comparator> set{};
+    set.insert("Bb");
+    set.insert("Ba");
+    set.insert("Ab");
+    set.insert("Aa");
+
 
     auto iter = set.begin();
     EXPECT_EQ("Bb", *iter++);
@@ -70,7 +78,7 @@ TEST(SetString, ElementsSortedInReversedAplhabeticalOrderWhenIterating) {
     EXPECT_EQ("Aa", *iter++);
     EXPECT_EQ(set.end(), iter);
 
-    // TODO: ....
+    set.insert("Ca");
 
     iter = set.begin();
     EXPECT_EQ("Ca", *iter++);
@@ -81,7 +89,7 @@ TEST(SetString, ElementsSortedInReversedAplhabeticalOrderWhenIterating) {
     EXPECT_EQ(set.end(), iter);
 
 }
-
+/*
 TEST(SetInt, InvalidComparatorThatCausesOnlyOneElementToBeInserted) {
 
     struct Comparator {
