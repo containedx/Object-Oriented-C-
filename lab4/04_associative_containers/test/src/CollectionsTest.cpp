@@ -1,6 +1,7 @@
 #include "TestIncludes.h"
 #include <set>
 #include <map>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -274,36 +275,53 @@ TEST(MultisetInt, RemoveRangeOfElements) {
     EXPECT_EQ(1, multiset.count(1));
     EXPECT_EQ(3, multiset.count(3));
 }
-/*
+
 TEST(UnorderedSetValue, CustomTypeHashAndComparator) {
 
     struct Value {
-        // TODO: ....
+        int a;
+        int b;
+        int c;
     };
 
     struct Hash {
-        // TODO: ....
+        size_t operator()(const Value& X) const
+        {
+            return (hash<int>()(X.a)) ^ (hash<int>()(X.b)) ^ (hash<int>()(X.c));
+        }
     };
 
     struct Equal {
-        // TODO: ....
+        bool operator()(const Value &A, const Value &B) const
+        {
+            if( A.a == B.a && A.b == B.b && A.c == B.c )
+                return true;
+            else
+                return false;
+        }
     };
 
-    // TODO: ....
+    unordered_set< Value, Hash, Equal > unordered_set = {};
 
     ASSERT_TRUE(unordered_set.empty());
 
-    // TODO: ....
+    unordered_set.insert({1, 1, 1});
 
     ASSERT_EQ(1u, unordered_set.size());
     EXPECT_EQ(1u, unordered_set.count(Value{1, 1, 1}));
 
-    // TODO: ....
+
 
     ASSERT_EQ(1u, unordered_set.size());
     EXPECT_EQ(1u, unordered_set.count(Value{1, 1, 1}));
 
-    // TODO: ....
+    unordered_set.insert({1, 2, 1});
+    unordered_set.insert({2, 1, 1});
+    unordered_set.insert({2, 2, 1});
+    unordered_set.insert({1, 1, 2});
+    unordered_set.insert({1, 2, 2});
+    unordered_set.insert({2, 1, 2});
+    unordered_set.insert({2, 2, 2});
 
     ASSERT_EQ(8u, unordered_set.size());
     EXPECT_EQ(1u, unordered_set.count(Value{1, 1, 1}));
@@ -318,52 +336,59 @@ TEST(UnorderedSetValue, CustomTypeHashAndComparator) {
 
 TEST(UnorderedSetInt, BucketsAndLoadFactor) {
 
-    // TODO: ....
+    unordered_set <int> unordered_set = {};
+    unordered_set.insert(1);
 
     ASSERT_EQ(1u, unordered_set.size());
     EXPECT_EQ(2u, unordered_set.bucket_count());
     EXPECT_FLOAT_EQ(1.0 / 2.0, unordered_set.load_factor());
     EXPECT_FLOAT_EQ(1.0f, unordered_set.max_load_factor());
 
-    // TODO: ....
+    unordered_set.insert(2);
 
     ASSERT_EQ(2u, unordered_set.size());
     EXPECT_EQ(2u, unordered_set.bucket_count());
     EXPECT_FLOAT_EQ(1.0f, unordered_set.load_factor());
     EXPECT_FLOAT_EQ(1.0f, unordered_set.max_load_factor());
 
-    // TODO: ....
+    unordered_set.insert(2);
+    unordered_set.insert(3);
+    unordered_set.insert(3);
 
     ASSERT_EQ(3u, unordered_set.size());
     EXPECT_EQ(5u, unordered_set.bucket_count());
     EXPECT_FLOAT_EQ(3.0 / 5.0, unordered_set.load_factor());
     EXPECT_FLOAT_EQ(1.0f, unordered_set.max_load_factor());
 
-    // TODO: ....
+    unordered_set.insert(5);
 
     ASSERT_EQ(4u, unordered_set.size());
     EXPECT_EQ(5u, unordered_set.bucket_count());
     EXPECT_FLOAT_EQ(4.0 / 5.0, unordered_set.load_factor());
     EXPECT_FLOAT_EQ(1.0f, unordered_set.max_load_factor());
 
-    // TODO: ....
+    unordered_set.insert(4);
 
     ASSERT_EQ(5u, unordered_set.size());
     EXPECT_EQ(5u, unordered_set.bucket_count());
     EXPECT_FLOAT_EQ(1.0f, unordered_set.load_factor());
     EXPECT_FLOAT_EQ(1.0f, unordered_set.max_load_factor());
 
-    // TODO: ....
+    unordered_set.insert(5);
+    unordered_set.insert(6);
+    unordered_set.insert(7);
+    unordered_set.insert(8);
+    unordered_set.insert(9);
+    unordered_set.insert(10);
 
     ASSERT_EQ(10u, unordered_set.size());
     EXPECT_EQ(11u, unordered_set.bucket_count());
     EXPECT_FLOAT_EQ(10.0 / 11.0, unordered_set.load_factor());
     EXPECT_FLOAT_EQ(1.0f, unordered_set.max_load_factor());
 
-    // TODO: ....
+    unordered_set.insert(11);
 
     ASSERT_EQ(11u, unordered_set.size());
     EXPECT_EQ(11u, unordered_set.bucket_count());
     EXPECT_FLOAT_EQ(11.0 / 11.0, unordered_set.load_factor());
 }
-*/
