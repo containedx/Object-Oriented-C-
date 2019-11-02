@@ -252,23 +252,29 @@ TEST(MapMapStringInt, NestedCollections) {
     EXPECT_EQ(2, map["count"]["3"]);
     EXPECT_EQ(7, map["count"]["4"]);
 }
-/*
+
 TEST(MultisetInt, RemoveRangeOfElements) {
 
-    // TODO: ....
+    multiset <int> multiset = {};
+
+    multiset.insert(1);
+    for(int i=0; i<12; i++)
+        multiset.insert(2);
+    for(int i=0; i<3; i++)
+        multiset.insert(3);
 
     ASSERT_EQ(16, multiset.size());
     EXPECT_EQ(1, multiset.count(1));
     EXPECT_EQ(12, multiset.count(2));
     EXPECT_EQ(3, multiset.count(3));
 
-    // TODO: ....
+    multiset.erase(2);
 
     ASSERT_EQ(4, multiset.size());
     EXPECT_EQ(1, multiset.count(1));
     EXPECT_EQ(3, multiset.count(3));
 }
-
+/*
 TEST(UnorderedSetValue, CustomTypeHashAndComparator) {
 
     struct Value {
