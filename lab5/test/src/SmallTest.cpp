@@ -111,5 +111,52 @@ TEST(SmallTest, Clear) {
     }
 }
 
+TEST( SmallTestMyOperator, Operatorless)
+{
+    Small A{};
+    Small B{};
+    A.data[0] = 'a';
+    B.data[0] = 'g';
 
-// TODO: Add tests for your operators implementation!
+    EXPECT_EQ(true, A < B);
+}
+
+TEST( SmallTestMyOperator1, Operatorless2)
+{
+    Small A{};
+    Small B{};
+    A.data[0] = 'z';
+    B.data[0] = 'g';
+
+    EXPECT_EQ(false, A < B);
+}
+
+TEST( SmallTestMyOperator2, Operatorequal)
+{
+    Small A{};
+    Small B{};
+    A.data[0] = 'a';
+    B.data[0] = 'a';
+
+    EXPECT_EQ(true, A == B);
+}
+
+TEST( SmallTestMyOperator3, Operatorequal2)
+{
+    Small A{};
+    Small B{};
+    A.data[0] = 'a';
+    B.data[0] = 'g';
+
+    EXPECT_EQ(true, A == B);
+}
+
+TEST( SmallTestMyHash, Hash)
+{
+    Small A{};
+    Small B{};
+    A.data[0] = 'a';
+    B.data[0] = 'a';
+    std::hash<char> hash;
+    EXPECT_EQ(hash(B.data[0]), hash(A.data[0]));
+}
