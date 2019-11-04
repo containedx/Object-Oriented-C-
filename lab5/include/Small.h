@@ -22,13 +22,15 @@ struct Small {
 
     bool operator<(const Small &rhs) const {
 
-        // TODO: Implement me!
+        if ( this->data[1] < rhs.data[1] )
+            return true;
         return false;
     }
 
     bool operator==(const Small &rhs) const {
 
-        // TODO: Implement me!
+        if ( this->data[1] == rhs.data[1] )
+            return true;
         return true;
     }
 };
@@ -38,8 +40,8 @@ namespace std {
     struct hash<Small> {
         std::size_t operator()(const Small &d) const {
 
-            // TODO: Implement me!
-            return 0;
+           std::hash<char> hash;
+           return hash(d.data[1]);
         }
     };
 }
