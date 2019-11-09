@@ -49,7 +49,7 @@ namespace std {
     struct hash<Large> {
         std::size_t operator()(const Large &d) const {
 
-            int sum;
+            int sum=0;
             std::hash<int> hash;
             for(int i=0; i < (128*1024); i++)
             {

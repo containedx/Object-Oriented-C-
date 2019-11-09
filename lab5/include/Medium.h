@@ -48,7 +48,7 @@ namespace std {
     template<>
     struct hash<Medium> {
         std::size_t operator()(const Medium &d) const {
-            int sum;
+            int sum=0;
             std::hash<int> hash;
             for(int i=0; i < 256; i++)
             {

@@ -105,4 +105,87 @@ TEST(MediumTest, Clear) {
     }
 }
 
-// TODO: Add tests for your operators implementation!
+TEST( MediumTestMyOperator, Operatorless)
+{
+    Medium A{};
+    Medium B{};
+
+    for(int i=0; i<256; i++)
+    {
+        A.data[i] = i;
+        B.data[i] = i+1;
+    }
+
+    EXPECT_EQ(true, A < B);
+}
+
+TEST( MediumTestMyOperator1, Operatorless2)
+{
+    Medium A{};
+    Medium B{};
+
+    for(int i=0; i<256; i++)
+    {
+        A.data[i] = i+5;
+        B.data[i] = i;
+    }
+
+    EXPECT_EQ(false, A < B );
+}
+
+TEST( MediumTestMyOperator2, Operatorequal)
+{
+    Medium A{};
+    Medium B{};
+    A.randomize();
+
+    for(int i=0; i<256; i++)
+    {
+        B.data[i] = A.data[i];
+    }
+
+    EXPECT_EQ(true, A == B);
+}
+
+
+TEST( MediumTestMyOperator3, Operatorequal2)
+{
+    Medium A{};
+    Medium B{};
+    A.randomize();
+    B.randomize();
+
+    EXPECT_EQ(false, A == B);
+}
+
+
+TEST( MediumTestMyHash, Hash)
+{
+    Medium A{};
+    Medium B{};
+
+    for(int i=0; i<256; i++)
+    {
+        A.data[i] = i;
+        B.data[i] = i;
+    }
+    std::hash<Medium> hash;
+
+    EXPECT_EQ(hash(B), hash(A));
+}
+
+TEST( MediumTestMyHash2, Hash2)
+{
+    Medium A{};
+    Medium B{};
+
+    B.randomize();
+
+    for(int i=0; i<256; i++)
+    {
+        A.data[i] =  B.data[i];
+    }
+    std::hash<Medium> hash;
+
+    EXPECT_EQ(hash(B), hash(A));
+}

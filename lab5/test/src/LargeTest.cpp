@@ -109,4 +109,87 @@ TEST(LargeTest, Clear) {
 }
 
 
-// TODO: Add tests for your operators implementation!
+
+TEST( LargeTestMyOperator, Operatorless)
+{
+    Large A{};
+    Large B{};
+
+    for(int i=0; i<128u*1024u; i++)
+    {
+        A.data[i] = i;
+        B.data[i] = i+1;
+    }
+
+    EXPECT_EQ(true, A < B);
+}
+
+
+TEST( MediumTestOperator1, Operatorless2)
+{
+    Large A{};
+    Large B{};
+
+    for(int i=0; i<128u*1024u; i++)
+    {
+        A.data[i] = i+10;
+        B.data[i] = i+1;
+    }
+
+    EXPECT_EQ(false, A < B);
+}
+
+TEST( LargeTestMyOperator2, Operatorequal)
+{
+    Large A{};
+    Large B{};
+
+    for(int i=0; i<128u*1024u; i++)
+    {
+        A.data[i] = i;
+        B.data[i] = i;
+    }
+
+    EXPECT_EQ(true, A == B);
+}
+
+
+TEST( LargeTestMyOperator3, Operatorequal2)
+{
+    Large A{};
+    Large B{};
+    A.randomize();
+    B.randomize();
+
+    EXPECT_EQ(false, A == B);
+}
+
+
+TEST( LargeTestMyHash, Hash)
+{
+    Large A{};
+    Large B{};
+
+    for(int i=0; i<128u*1024u; i++)
+    {
+        A.data[i] = i;
+        B.data[i] = i;
+    }
+    std::hash<Large> hash;
+
+    EXPECT_EQ(hash(B), hash(A));
+}
+
+TEST( LargeTestMyHash2, Hash2)
+{
+    Large A{};
+    Large B{};
+    A.randomize();
+
+    for(int i=0; i<128u*1024u; i++)
+    {
+        B.data[i] = A.data[i];
+    }
+    std::hash<Large> hash;
+    EXPECT_EQ(hash(B), hash(A));
+}

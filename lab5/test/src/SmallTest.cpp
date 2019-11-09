@@ -157,6 +157,6 @@ TEST( SmallTestMyHash, Hash)
     Small B{};
     A.data[0] = 'a';
     B.data[0] = 'a';
-    std::hash<char> hash;
-    EXPECT_EQ(hash(B.data[0]), hash(A.data[0]));
+    std::hash<Small> hash;
+    EXPECT_EQ(hash(B), hash(A));
 }
