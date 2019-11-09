@@ -148,7 +148,7 @@ TEST( SmallTestMyOperator3, Operatorequal2)
     A.data[0] = 'a';
     B.data[0] = 'g';
 
-    EXPECT_EQ(true, A == B);
+    EXPECT_EQ(false, A == B);
 }
 
 TEST( SmallTestMyHash, Hash)
