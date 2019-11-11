@@ -1,5 +1,5 @@
 #include "BenchIncludes.h"
-
+/*
 void pauseAndResume(State& state) {
 
     for (auto _ : state) {
@@ -73,3 +73,5 @@ void linearComplexityAndSomethingInPauseAndResume(State& state) {
 // That's why I've increased range from 2^10 to 2^15 and complexity was correct O(N)
 // Conclusion - measured time must be much larger than Pause/Resume overhead
 BENCHMARK(linearComplexityAndSomethingInPauseAndResume)->RangeMultiplier(2)->Range(1, 1<<15)->Complexity();
+
+ */
