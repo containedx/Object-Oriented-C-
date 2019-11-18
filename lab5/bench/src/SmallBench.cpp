@@ -14,10 +14,11 @@ static void Operator1( State& state )
 
         DoNotOptimize(&state);
     }
-    state.SetComplexityN(state.range(0));
+   // state.SetComplexityN(state.range(0)); NIEPOTRZEBNE !!
 }
 
-BENCHMARK( Operator1 )->RangeMultiplier(2)->Range(1<<10, 1<<18)->Complexity();
+BENCHMARK( Operator1 ) //->RangeMultiplier(2)->Range(1<<10, 1<<18)->Complexity(); nie mierzyc zlozonosci xd
+                        // zmierzyc tylko ile trwaa 1 porownanie
 
 static void Operator2( State& state )
 {
