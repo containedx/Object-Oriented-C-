@@ -26,7 +26,7 @@ struct Large {
 
         for(int i=0; i < (128*1024); i++)
         {
-            if(this->data[i] > rhs.data[i])
+            if(this->data[i] >= rhs.data[i])
                 return false;
         }
             return true;

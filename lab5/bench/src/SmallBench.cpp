@@ -5,10 +5,11 @@
 
 static void SmallOperator1( State& state )
 {
+    Small A{};
+    Small B{};
+
     for (auto _ : state)
     {
-        Small A{};
-        Small B{};
         auto operation = A < B;
     }
 }
@@ -17,10 +18,10 @@ BENCHMARK( SmallOperator1 );
 
 static void SmallOperator2( State& state )
 {
+    Small A{};
+    Small B{};
     for (auto _ : state)
     {
-        Small A{};
-        Small B{};
         auto operation = A == B;
     }
 }
@@ -29,9 +30,9 @@ BENCHMARK( SmallOperator2 );
 
 static void SmallHashing( State& state )
 {
+    Small A{};
     for (auto _ : state)
     {
-        Small A{};
         std::hash<Small> hash;
         auto operation = hash(A);
     }

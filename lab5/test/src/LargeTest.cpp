@@ -139,6 +139,20 @@ TEST( MediumTestOperator1, Operatorless2)
     EXPECT_EQ(false, A < B);
 }
 
+TEST( LargeTestMyOperatorLessWhenEqual, Operatorless)
+{
+    Large A{};
+    Large B{};
+    A.randomize();
+
+    for(int i=0; i<(128u*1024); i++)
+    {
+        B.data[i] = A.data[i];
+    }
+
+    EXPECT_EQ(false, A < B);
+}
+
 TEST( LargeTestMyOperator2, Operatorequal)
 {
     Large A{};

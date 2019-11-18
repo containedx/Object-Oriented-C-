@@ -25,7 +25,7 @@ struct Medium {
 
         for(int i=0; i < 256; i++)
         {
-            if(this->data[i] > rhs.data[i])
+            if(this->data[i] >= rhs.data[i])
                 return false;
         }
 

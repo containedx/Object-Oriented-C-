@@ -131,6 +131,16 @@ TEST( SmallTestMyOperator1, Operatorless2)
     EXPECT_EQ(false, A < B);
 }
 
+TEST( SmallTestMyOperator1e, Operatorless2)
+{
+    Small A{};
+    Small B{};
+    A.data[0] = 'z';
+    B.data[0] = 'z';
+
+    EXPECT_EQ(false, A < B);
+}
+
 TEST( SmallTestMyOperator2, Operatorequal)
 {
     Small A{};

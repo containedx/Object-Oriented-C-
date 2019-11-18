@@ -133,6 +133,21 @@ TEST( MediumTestMyOperator1, Operatorless2)
     EXPECT_EQ(false, A < B );
 }
 
+TEST( MediumTestMyOperatorLessWhenEqual, Operatorless)
+{
+    Medium A{};
+    Medium B{};
+    A.randomize();
+
+    for(int i=0; i<256; i++)
+    {
+        B.data[i] = A.data[i];
+    }
+
+    EXPECT_EQ(false, A < B);
+}
+
+
 TEST( MediumTestMyOperator2, Operatorequal)
 {
     Medium A{};
