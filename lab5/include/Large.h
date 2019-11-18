@@ -53,7 +53,7 @@ namespace std {
             std::hash<int> hash;
             for(int i=0; i < (128*1024); i++)
             {
-                sum += hash(d.data[i]);
+                sum += hash(d.data[i] * i ) ;
             }
             return sum;
         }

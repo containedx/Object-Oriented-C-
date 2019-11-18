@@ -52,7 +52,7 @@ namespace std {
             std::hash<int> hash;
             for(int i=0; i < 256; i++)
             {
-                sum += hash(d.data[i]); //sume
+                sum += hash(d.data[i] * i); //sume
             }
             return sum;
         }

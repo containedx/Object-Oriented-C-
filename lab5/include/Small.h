@@ -41,7 +41,7 @@ namespace std {
         std::size_t operator()(const Small &d) const {
 
            std::hash<char> hash;
-           return hash(d.data[0]);
+           return hash(d.data[0] );
 
         }
     };

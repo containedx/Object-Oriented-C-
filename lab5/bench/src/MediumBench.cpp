@@ -11,15 +11,11 @@ static void MediumOperator1( State& state )
         Medium B{};
         A.randomize();
         B.randomize();
-
         auto operation = A < B;
-
-        DoNotOptimize(&state);
     }
-    state.SetComplexityN(state.range(0));
 }
 
-BENCHMARK( MediumOperator1 )->RangeMultiplier(2)->Range(1<<10, 1<<18)->Complexity();
+BENCHMARK( MediumOperator1 );
 
 static void MediumOperator2( State& state )
 {
@@ -29,15 +25,11 @@ static void MediumOperator2( State& state )
         Medium B{};
         A.randomize();
         B.randomize();
-
         auto operation = A == B;
-
-        DoNotOptimize(&state);
     }
-    state.SetComplexityN(state.range(0));
 }
 
-BENCHMARK( MediumOperator2 )->RangeMultiplier(2)->Range(1<<10, 1<<18)->Complexity();
+BENCHMARK( MediumOperator2 );
 
 static void MediumHashing( State& state )
 {
@@ -47,10 +39,7 @@ static void MediumHashing( State& state )
         A.randomize();
         std::hash<Medium> hash;
         auto operation = hash(A);
-
-        DoNotOptimize(&state);
     }
-    state.SetComplexityN(state.range(0));
 }
 
-BENCHMARK( MediumHashing )->RangeMultiplier(2)->Range(1<<10, 1<<18)->Complexity();
+BENCHMARK( MediumHashing );
