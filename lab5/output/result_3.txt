@@ -1,0 +1,12 @@
+----------------------------------------------------------
+Benchmark                Time             CPU   Iterations
+----------------------------------------------------------
+SmallOperator1        9.13 ns         9.12 ns     77212467
+SmallOperator2        9.69 ns         9.69 ns     72372367
+SmallHashing          12.2 ns         12.2 ns     58117060
+MediumOperator1      81487 ns        81473 ns         8600
+MediumOperator2      83249 ns        83217 ns         8620
+MediumHashing        42897 ns        42895 ns        16384
+LargeOperator1    38509245 ns     38495205 ns           18
+LargeOperator2    38276349 ns     38270461 ns           18
+LargeHashing      20916313 ns     20870227 ns           34

@@ -17,7 +17,7 @@ static void Sbench_at(State& state)
 
     for(auto _ : state)
     {
-        v.at(rand());
+        v.at(0);
     }
     state.SetComplexityN(state.range(0));
 }
@@ -155,11 +155,18 @@ BENCHMARK(Sbench_shrink)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
 static void Sbench_clear(State& state)
 {
-    Small A{};
-    vector<Small> v = {A};
+    Small tab[10];
+    vector<Small> v;
+
 
     for(auto _ : state)
     {
+        for (int i = 0; i < 10; i++)
+        {
+            tab[i].data[0] = rand();
+            v.push_back(tab[i]);
+        }
+
         v.clear();
     }
     state.SetComplexityN(state.range(0));
