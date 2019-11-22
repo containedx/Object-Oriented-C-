@@ -1,0 +1,159 @@
+-----------------------------------------------------------------
+Benchmark                       Time             CPU   Iterations
+-----------------------------------------------------------------
+Sbench_empty/1               10.2 ns         10.2 ns     66240605
+Sbench_empty/2               10.5 ns         10.4 ns     69597067
+Sbench_empty/4               10.5 ns         10.4 ns     69092343
+Sbench_empty/8               11.1 ns         11.0 ns     67501542
+Sbench_empty/16              15.4 ns         15.1 ns     49483974
+Sbench_empty/32              13.8 ns         13.7 ns     50019399
+Sbench_empty/64              13.9 ns         13.7 ns     63162309
+Sbench_empty/128             11.6 ns         11.4 ns     63955842
+Sbench_empty/256             10.5 ns         10.5 ns     66069787
+Sbench_empty/512             11.6 ns         11.5 ns     59833023
+Sbench_empty/1024            10.4 ns         10.4 ns     65600492
+Sbench_empty_BigO           11.78 (1)       11.67 (1)  
+Sbench_empty_RMS               14 %            14 %    
+Sbench_size/1                7.20 ns         7.19 ns    101010143
+Sbench_size/2                7.06 ns         7.05 ns     97721035
+Sbench_size/4                6.98 ns         6.97 ns     87562545
+Sbench_size/8                7.13 ns         7.10 ns    102698715
+Sbench_size/16               8.61 ns         8.53 ns     88519254
+Sbench_size/32               8.56 ns         8.56 ns     73580323
+Sbench_size/64               8.04 ns         7.94 ns     85686356
+Sbench_size/128              7.69 ns         7.65 ns     83404136
+Sbench_size/256              6.99 ns         6.97 ns    101221196
+Sbench_size/512              7.09 ns         7.04 ns    101782158
+Sbench_size/1024             7.11 ns         7.09 ns     98991132
+Sbench_size_BigO             7.50 (1)        7.46 (1)  
+Sbench_size_RMS                 8 %             8 %    
+Sbench_maxsize/1             19.8 ns         19.8 ns     33922585
+Sbench_maxsize/2             19.8 ns         19.8 ns     33751896
+Sbench_maxsize/4             20.4 ns         20.4 ns     35069943
+Sbench_maxsize/8             20.0 ns         19.9 ns     34826646
+Sbench_maxsize/16            19.9 ns         19.8 ns     35590145
+Sbench_maxsize/32            20.0 ns         19.9 ns     35672836
+Sbench_maxsize/64            19.9 ns         19.9 ns     35123254
+Sbench_maxsize/128           20.1 ns         20.1 ns     34948247
+Sbench_maxsize/256           20.2 ns         20.1 ns     35350426
+Sbench_maxsize/512           19.9 ns         19.9 ns     34318968
+Sbench_maxsize/1024          19.8 ns         19.8 ns     35637048
+Sbench_maxsize_BigO         19.98 (1)       19.93 (1)  
+Sbench_maxsize_RMS              1 %             1 %    
+Sbench_clear/1               1010 ns         1010 ns       694478
+Sbench_clear/2               1096 ns         1095 ns       649952
+Sbench_clear/4               1214 ns         1215 ns       574113
+Sbench_clear/8               1487 ns         1483 ns       477512
+Sbench_clear/16              2123 ns         2109 ns       331335
+Sbench_clear/32              3148 ns         3133 ns       222714
+Sbench_clear/64              5653 ns         5589 ns       134736
+Sbench_clear/128             9535 ns         9467 ns        75398
+Sbench_clear/256            18621 ns        18459 ns        39363
+Sbench_clear/512            39387 ns        39084 ns        20364
+Sbench_clear/1024           71648 ns        71295 ns         9435
+Sbench_clear_BigO           71.55 N         71.14 N    
+Sbench_clear_RMS                9 %             9 %    
+Sbench_insert/1              1326 ns         1334 ns       447862
+Sbench_insert/2              1389 ns         1392 ns       570180
+Sbench_insert/4              1230 ns         1234 ns       558499
+Sbench_insert/8              1242 ns         1241 ns       598946
+Sbench_insert/16             1314 ns         1316 ns       565655
+Sbench_insert/32             1220 ns         1227 ns       548009
+Sbench_insert/64             1199 ns         1200 ns       569649
+Sbench_insert/128            1194 ns         1197 ns       592414
+Sbench_insert/256            1643 ns         1614 ns       545530
+Sbench_insert/512            1441 ns         1428 ns       432430
+Sbench_insert/1024           1367 ns         1346 ns       595510
+Sbench_insert_BigO        1324.29 (1)     1320.86 (1)  
+Sbench_insert_RMS              10 %             9 %    
+Sbench_erase/1               1373 ns         1353 ns       573142
+Sbench_erase/2               1191 ns         1194 ns       589628
+Sbench_erase/4               1167 ns         1168 ns       517022
+Sbench_erase/8               1127 ns         1127 ns       620022
+Sbench_erase/16              1134 ns         1137 ns       616465
+Sbench_erase/32              1210 ns         1212 ns       613172
+Sbench_erase/64              1201 ns         1203 ns       552570
+Sbench_erase/128             1211 ns         1212 ns       576041
+Sbench_erase/256             1319 ns         1295 ns       603777
+Sbench_erase/512             1338 ns         1311 ns       571783
+Sbench_erase/1024            1492 ns         1488 ns       460890
+Sbench_erase_BigO         1251.31 (1)     1245.47 (1)  
+Sbench_erase_RMS                9 %             8 %    
+Sbench_swap/1                 338 ns          333 ns      1896423
+Sbench_swap/2                 300 ns          300 ns      2346355
+Sbench_swap/4                 319 ns          318 ns      2297984
+Sbench_swap/8                 307 ns          307 ns      2308019
+Sbench_swap/16                296 ns          295 ns      2387112
+Sbench_swap/32                303 ns          299 ns      2453038
+Sbench_swap/64                288 ns          287 ns      2351829
+Sbench_swap/128               298 ns          296 ns      2434930
+Sbench_swap/256               287 ns          286 ns      2448887
+Sbench_swap/512               316 ns          311 ns      2480702
+Sbench_swap/1024              305 ns          305 ns      1859616
+Sbench_swap_BigO           305.25 (1)      303.42 (1)  
+Sbench_swap_RMS                 5 %             4 %    
+Sbench_count/1                115 ns          114 ns      6357318
+Sbench_count/2                162 ns          162 ns      6475439
+Sbench_count/4                180 ns          179 ns      3669337
+Sbench_count/8                130 ns          129 ns      3962949
+Sbench_count/16               129 ns          129 ns      4750383
+Sbench_count/32               150 ns          150 ns      5019868
+Sbench_count/64               138 ns          138 ns      5057120
+Sbench_count/128              274 ns          273 ns      5306597
+Sbench_count/256              239 ns          238 ns      3419798
+Sbench_count/512              648 ns          642 ns      1067966
+Sbench_count/1024             577 ns          575 ns      1000000
+Sbench_count_BigO           47.89 lgN       47.63 lgN  
+Sbench_count_RMS               47 %            46 %    
+Sbench_find/1                 127 ns          126 ns      5468474
+Sbench_find/2                 173 ns          173 ns      5760837
+Sbench_find/4                 179 ns          175 ns      5402702
+Sbench_find/8                 132 ns          130 ns      5657894
+Sbench_find/16                187 ns          183 ns      5656558
+Sbench_find/32                301 ns          297 ns      5606982
+Sbench_find/64                126 ns          126 ns      5042165
+Sbench_find/128               178 ns          178 ns      5236322
+Sbench_find/256               128 ns          128 ns      5515541
+Sbench_find/512               130 ns          130 ns      5699462
+Sbench_find/1024              122 ns          122 ns      5904860
+Sbench_find_BigO           162.01 (1)      160.73 (1)  
+Sbench_find_RMS                31 %            31 %    
+Sbench_equalrange/1           169 ns          169 ns      4526973
+Sbench_equalrange/2           237 ns          235 ns      3890120
+Sbench_equalrange/4           185 ns          182 ns      4094453
+Sbench_equalrange/8           247 ns          246 ns      3564307
+Sbench_equalrange/16          223 ns          222 ns      3660980
+Sbench_equalrange/32          210 ns          209 ns      4099476
+Sbench_equalrange/64          179 ns          176 ns      3055007
+Sbench_equalrange/128         262 ns          261 ns      4207954
+Sbench_equalrange/256         247 ns          246 ns      3269917
+Sbench_equalrange/512         242 ns          241 ns      2203639
+Sbench_equalrange/1024        429 ns          423 ns      1297267
+Sbench_equalrange_BigO     239.09 (1)      237.19 (1)  
+Sbench_equalrange_RMS          28 %            28 %    
+Sbench_rehash/1              1101 ns         1105 ns       614717
+Sbench_rehash/2              1132 ns         1134 ns       628611
+Sbench_rehash/4              1219 ns         1217 ns       462905
+Sbench_rehash/8              1006 ns         1003 ns       708682
+Sbench_rehash/16             1007 ns         1007 ns       709931
+Sbench_rehash/32             1083 ns         1069 ns       622704
+Sbench_rehash/64             1020 ns         1018 ns       679866
+Sbench_rehash/128            1045 ns         1038 ns       667709
+Sbench_rehash/256            1005 ns         1003 ns       711936
+Sbench_rehash/512            1035 ns         1028 ns       687929
+Sbench_rehash/1024           1001 ns         1000 ns       715898
+Sbench_rehash_BigO        1059.42 (1)     1056.52 (1)  
+Sbench_rehash_RMS               6 %             6 %    
+Sbench_reserve/1             1137 ns         1141 ns       611997
+Sbench_reserve/2             1243 ns         1233 ns       602782
+Sbench_reserve/4             1283 ns         1275 ns       493284
+Sbench_reserve/8             1031 ns         1032 ns       697562
+Sbench_reserve/16            1000 ns         1002 ns       703312
+Sbench_reserve/32             996 ns          995 ns       692370
+Sbench_reserve/64             999 ns         1000 ns       720963
+Sbench_reserve/128            991 ns         1002 ns       706921
+Sbench_reserve/256           1001 ns         1002 ns       701613
+Sbench_reserve/512           1002 ns         1004 ns       710071
+Sbench_reserve/1024           990 ns          992 ns       687916
+Sbench_reserve_BigO       1061.29 (1)     1061.72 (1)  
+Sbench_reserve_RMS             10 %             9 %    
