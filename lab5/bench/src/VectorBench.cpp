@@ -163,7 +163,7 @@ static void Sbench_reserve(State& state)
 
     for(auto _ : state)
     {
-        auto n = rand();
+        auto n = rand()%10;
         v.reserve(n);
     }
     state.SetComplexityN(state.range(0));
