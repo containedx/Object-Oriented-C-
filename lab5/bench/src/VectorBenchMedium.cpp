@@ -1,0 +1,346 @@
+#include "Medium.h"
+#include "BenchIncludes.h"
+#include <vector>
+using namespace std;
+
+static void Mbench_at(State& state)
+{
+    auto N = state.range(0);
+    Medium tab[N];
+    vector<Medium> v;
+    for (int i = 0; i < N; i++)
+    {
+        tab[i].randomize();
+        v.push_back(tab[i]);
+    }
+
+    for(auto _ : state)
+    {
+        v.at(0);
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_at)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_operator(State& state)
+{
+    auto N = state.range(0);
+    Medium tab[N];
+    vector<Medium> v;
+    for (int i = 0; i < N; i++)
+    {
+        tab[i].randomize();
+        v.push_back(tab[i]);
+    }
+
+    for(auto _ : state)
+    {
+        v[0];
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_operator)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_front(State& state)
+{
+    auto N = state.range(0);
+    Medium tab[N];
+    vector<Medium> v;
+    for (int i = 0; i < N; i++)
+    {
+        tab[i].randomize();
+        v.push_back(tab[i]);
+    }
+
+    for(auto _ : state)
+    {
+        v.front();
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_front)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_back(State& state)
+{
+    auto N = state.range(0);
+    Medium tab[N];
+    vector<Medium> v;
+    for (int i = 0; i < N; i++)
+    {
+        tab[i].randomize();
+        v.push_back(tab[i]);
+    }
+
+    for(auto _ : state)
+    {
+        v.back();
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_back)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_data(State& state)
+{
+    auto N = state.range(0);
+    Medium tab[N];
+    vector<Medium> v;
+    for (int i = 0; i < N; i++)
+    {
+        tab[i].randomize();
+        v.push_back(tab[i]);
+    }
+
+    for(auto _ : state)
+    {
+        v.data();
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_data)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_empty(State& state)
+{
+    Medium A{};
+    vector<Medium> v = {A};
+
+    for(auto _ : state)
+    {
+        v.empty();
+    }
+    state.SetComplexityN(state.range(0));
+}
+BENCHMARK(Mbench_empty)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_size(State& state)
+{
+    auto N = state.range(0);
+    Medium tab[N];
+    vector<Medium> v;
+    for (int i = 0; i < N; i++)
+    {
+        tab[i].randomize();
+        v.push_back(tab[i]);
+    }
+
+    for(auto _ : state)
+    {
+        v.size();
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_size)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_maxsize(State& state)
+{
+    auto N = state.range(0);
+    Medium tab[N];
+    vector<Medium> v;
+    for (int i = 0; i < N; i++)
+    {
+        tab[i].randomize();
+        v.push_back(tab[i]);
+    }
+
+    for(auto _ : state)
+    {
+        v.max_size();
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_maxsize)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_reserve(State& state)
+{
+    Medium A{};
+    vector<Medium> v = {A};
+
+    for(auto _ : state)
+    {
+        auto n = rand()%10;
+        v.reserve(n);
+    }
+    state.SetComplexityN(state.range(0));
+}
+BENCHMARK(Mbench_reserve)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_capacity(State& state)
+{
+    auto N = state.range(0);
+    Medium tab[N];
+    vector<Medium> v;
+    for (int i = 0; i < N; i++)
+    {
+        tab[i].randomize();
+        v.push_back(tab[i]);
+    }
+
+    for(auto _ : state)
+    {
+        v.capacity();
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_capacity)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_shrink(State& state)
+{
+    auto N = state.range(0);
+
+    for(auto _ : state)
+    {
+        state.PauseTiming();
+        vector<Medium> v(N);
+        int n = rand()%10;
+        v.resize(n);
+        state.ResumeTiming();
+
+        v.shrink_to_fit();
+    }
+    state.SetComplexityN(state.range(0));
+}
+BENCHMARK(Mbench_shrink)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_clear(State& state)
+{
+    auto N = state.range(0);
+    Medium tab[N];
+    vector<Medium> v;
+    for(int i=0; i<N; i++)
+    {
+        tab[i].randomize();
+    }
+
+
+    for(auto _ : state)
+    {
+        state.PauseTiming();
+        for (int i = 0; i < N; i++)
+        {
+            v.push_back(tab[i]);
+        }
+        state.ResumeTiming();
+
+        v.clear();
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_clear)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_insert(State& state)
+{
+    Medium A{};
+    vector<Medium> v = {};
+
+    for(auto _ : state)
+    {
+        v.insert(v.begin(), A);
+
+        state.PauseTiming();
+        v.erase(v.begin());
+        state.ResumeTiming();
+    }
+    state.SetComplexityN(state.range(0));
+}
+BENCHMARK(Mbench_insert)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_erase(State& state)
+{
+    Medium tab[10];
+    vector<Medium> v;
+    for (int i = 0; i < 10; i++)
+    {
+        tab[i].randomize();
+        v.push_back(tab[i]);
+    }
+    Medium A{};
+    A.randomize();
+
+
+    for(auto _ : state)
+    {
+        state.PauseTiming();
+        auto it = v.begin();
+        v.insert(it, A);
+        state.ResumeTiming();
+
+        v.erase(it);
+    }
+    state.SetComplexityN(state.range(0));
+}
+BENCHMARK(Mbench_erase)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_pushback(State& state)
+{
+    Medium A{};
+    vector<Medium> v = {};
+
+    for(auto _ : state)
+    {
+        v.push_back(A);
+
+        state.PauseTiming();
+        v.pop_back();
+        state.ResumeTiming();
+    }
+    state.SetComplexityN(state.range(0));
+}
+BENCHMARK(Mbench_pushback)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_popback(State& state)
+{
+    auto N = state.range(0);
+    Medium A{};
+    A.randomize();
+    vector<Medium> v = {};
+
+    for(auto _ : state)
+    {
+        state.PauseTiming();
+        v.push_back(A);
+        state.ResumeTiming();
+
+        v.pop_back();
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_popback)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_resize(State& state)
+{
+    auto N = state.range(0);
+    for(auto _ : state)
+    {
+        state.PauseTiming();
+        vector<Medium>v(N);
+        int n = rand()%10;
+        state.ResumeTiming();
+
+        v.resize(n);
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_resize)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_swap(State& state)
+{
+    auto N = state.range(0);
+    Medium tab[N];
+    Medium tab2[N];
+    vector<Medium> v;
+    vector<Medium> w;
+    for (int i = 0; i < N; i++)
+    {
+        tab[i].randomize();
+        tab2[i].randomize();
+
+        v.push_back(tab[i]);
+        w.push_back(tab2[i]);
+    }
+
+    for(auto _ : state)
+    {
+        v.swap(w);
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_swap)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
