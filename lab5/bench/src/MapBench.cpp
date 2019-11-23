@@ -8,21 +8,24 @@ using namespace std;
  at, operator[], empty, size, max_size,
     clear, insert, erase, swap,
     count, find, equal_range, lower_bound, upper_bound
- */
+*/
 
 static void Sbench_at(State& state)
 {
     auto N = state.range(0);
-    map <Small, Small> m{};
-    Small A{};
-    Small B{};
-    A.data[0] = rand();
-    B.data[0] = rand();
-    m.insert({A,B});
+    map <Small, Small> m;
+    Small A[N];
+    Small B[N];
+    for(int i=0; i<N; i++)
+    {
+        A[i].data[0] = rand();
+        B[i].data[0] = rand();
+        m.insert({A[i],B[i]});
+    }
 
     for(auto _: state)
     {
-       DoNotOptimize( m.at(A));
+       DoNotOptimize( m.at(A[0]));
     }
     state.SetComplexityN(N);
 }
@@ -32,16 +35,19 @@ BENCHMARK(Sbench_at)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 static void Sbench_operator(State& state)
 {
     auto N = state.range(0);
-    map <Small, Small> m{};
-    Small A{};
-    Small B{};
-    A.data[0] = rand();
-    B.data[0] = rand();
-    m.insert({A,B});
+    map <Small, Small> m;
+    Small A[N];
+    Small B[N];
+    for(int i=0; i<N; i++)
+    {
+        A[i].data[0] = rand();
+        B[i].data[0] = rand();
+        m.insert({A[i],B[i]});
+    }
 
     for(auto _: state)
     {
-        DoNotOptimize(m[A]);
+        DoNotOptimize(m[A[0]]);
     }
     state.SetComplexityN(N);
 }
@@ -50,7 +56,7 @@ BENCHMARK(Sbench_operator)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 static void Sbench_empty(State& state)
 {
     auto N = state.range(0);
-    map <Small, Small> m{};
+    map <Small, Small> m;
     Small A[N];
     Small B[N];
     for(int i=0; i<N; i++)
@@ -129,6 +135,7 @@ static void Sbench_clear(State& state)
         state.ResumeTiming();
 
         m.clear();
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -195,6 +202,7 @@ static void Sbench_swap(State& state)
     for(auto _: state)
     {
         m.swap(w);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -203,7 +211,7 @@ BENCHMARK(Sbench_swap)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 static void Sbench_count(State& state)
 {
     auto N = state.range(0);
-    map <Small, Small> m{};
+    map <Small, Small> m;
     Small A[N];
     Small B[N];
     for(int i=0; i<N; i++)
@@ -215,8 +223,7 @@ static void Sbench_count(State& state)
 
     for(auto _: state)
     {
-        int num = rand()%N;
-        DoNotOptimize(m.count(A[num]));
+        DoNotOptimize(m.count(A[5]));
     }
     state.SetComplexityN(N);
 }
@@ -225,7 +232,7 @@ BENCHMARK(Sbench_count)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 static void Sbench_find(State& state)
 {
     auto N = state.range(0);
-    map <Small, Small> m{};
+    map <Small, Small> m;
     Small A[N];
     Small B[N];
     for(int i=0; i<N; i++)
@@ -237,8 +244,7 @@ static void Sbench_find(State& state)
 
     for(auto _: state)
     {
-        int num = rand()%N;
-        DoNotOptimize(m.find(A[N]));
+        DoNotOptimize(m.find(A[5]));
     }
     state.SetComplexityN(N);
 }
@@ -247,7 +253,7 @@ BENCHMARK(Sbench_find)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 static void Sbench_equalrange(State& state)
 {
     auto N = state.range(0);
-    map <Small, Small> m{};
+    map <Small, Small> m;
     Small A[N];
     Small B[N];
     for(int i=0; i<N; i++)
@@ -259,8 +265,7 @@ static void Sbench_equalrange(State& state)
 
     for(auto _: state)
     {
-        int num = rand()%N;
-        DoNotOptimize(m.equal_range(A[num]));
+          DoNotOptimize(m.equal_range(A[5]));
     }
     state.SetComplexityN(N);
 }
@@ -269,7 +274,7 @@ BENCHMARK(Sbench_equalrange)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 static void Sbench_lowerbound(State& state)
 {
     auto N = state.range(0);
-    map <Small, Small> m{};
+    map <Small, Small> m;
     Small A[N];
     Small B[N];
     for(int i=0; i<N; i++)
@@ -281,8 +286,7 @@ static void Sbench_lowerbound(State& state)
 
     for(auto _: state)
     {
-        int num = rand()%N;
-        DoNotOptimize(m.lower_bound(A[num]));
+        DoNotOptimize(m.lower_bound(A[5]));
     }
     state.SetComplexityN(N);
 }
@@ -291,7 +295,7 @@ BENCHMARK(Sbench_lowerbound)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 static void Sbench_upperbound(State& state)
 {
     auto N = state.range(0);
-    map <Small, Small> m{};
+    map <Small, Small> m;
     Small A[N];
     Small B[N];
     for(int i=0; i<N; i++)
@@ -303,8 +307,7 @@ static void Sbench_upperbound(State& state)
 
     for(auto _: state)
     {
-        int num = rand()%N;
-        DoNotOptimize(m.upper_bound(A[num]));
+        DoNotOptimize(m.upper_bound(A[5]));
     }
     state.SetComplexityN(N);
 }

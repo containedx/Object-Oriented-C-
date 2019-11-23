@@ -13,7 +13,7 @@ using namespace std;
 static void Sbench_at(State& state)
 {
     auto N = state.range(0);
-    vector<Small> v;
+    vector<Small> v(N);
     Small A{};
     A.data[0]=rand();
     v.push_back(A);
@@ -30,7 +30,7 @@ static void Sbench_operator(State& state)
 {
     auto N = state.range(0);
     Small tab[N];
-    vector<Small> v;
+    vector<Small> v(N);
     for (int i = 0; i < N; i++)
     {
         tab[i].data[0] = rand();
@@ -49,7 +49,7 @@ static void Sbench_front(State& state)
 {
     auto N = state.range(0);
     Small tab[N];
-    vector<Small> v;
+    vector<Small> v(N);
     for (int i = 0; i < N; i++)
     {
         tab[i].data[0] = rand();
@@ -68,7 +68,7 @@ static void Sbench_back(State& state)
 {
     auto N = state.range(0);
     Small tab[N];
-    vector<Small> v;
+    vector<Small> v(N);
     for (int i = 0; i < N; i++)
     {
         tab[i].data[0] = rand();
@@ -87,7 +87,7 @@ static void Sbench_data(State& state)
 {
     auto N = state.range(0);
     Small tab[N];
-    vector<Small> v;
+    vector<Small> v(N);
     for (int i = 0; i < N; i++)
     {
         tab[i].data[0] = rand();
@@ -104,14 +104,16 @@ BENCHMARK(Sbench_data)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
 static void Sbench_empty(State& state)
 {
+    auto N = state.range(0);
     Small A{};
-    vector<Small> v = {A};
+    vector<Small> v(N);
+    v.push_back(A);
 
     for(auto _ : state)
     {
         DoNotOptimize(v.empty());
     }
-    state.SetComplexityN(state.range(0));
+    state.SetComplexityN(N);
 }
 BENCHMARK(Sbench_empty)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
@@ -119,7 +121,7 @@ static void Sbench_size(State& state)
 {
     auto N = state.range(0);
     Small tab[N];
-    vector<Small> v;
+    vector<Small> v(N);
     for (int i = 0; i < N; i++)
     {
         tab[i].data[0] = rand();
@@ -138,7 +140,7 @@ static void Sbench_maxsize(State& state)
 {
     auto N = state.range(0);
     Small tab[N];
-    vector<Small> v;
+    vector<Small> v(N);
     for (int i = 0; i < N; i++)
     {
         tab[i].data[0] = rand();
@@ -155,8 +157,10 @@ BENCHMARK(Sbench_maxsize)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
 static void Sbench_reserve(State& state)
 {
+    auto N = state.range(0);
     Small A{};
-    vector<Small> v = {A};
+    vector<Small> v(N);
+    v.push_back(A);
 
     for(auto _ : state)
     {
@@ -171,7 +175,7 @@ static void Sbench_capacity(State& state)
 {
     auto N = state.range(0);
     Small tab[N];
-    vector<Small> v;
+    vector<Small> v(N);
     for (int i = 0; i < N; i++)
     {
         tab[i].data[0] = rand();
@@ -198,9 +202,11 @@ static void Sbench_shrink(State& state)
         v.resize(num);
         state.ResumeTiming();
 
+        DoNotOptimize(v.data());
         v.shrink_to_fit();
+        ClobberMemory();
     }
-    state.SetComplexityN(state.range(0));
+    state.SetComplexityN(N);
 }
 BENCHMARK(Sbench_shrink)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
@@ -208,7 +214,7 @@ static void Sbench_clear(State& state)
 {
     auto N = state.range(0);
     Small tab[N];
-    vector<Small> v;
+    vector<Small> v(N);
 
 
     for(auto _ : state)
@@ -221,7 +227,9 @@ static void Sbench_clear(State& state)
         }
         state.ResumeTiming();
 
+        DoNotOptimize(v.data());
         v.clear();
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -229,8 +237,9 @@ BENCHMARK(Sbench_clear)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
 static void Sbench_insert(State& state)
 {
+    auto N = state.range(0);
     Small A{};
-    vector<Small> v = {};
+    vector<Small> v(N);
 
     for(auto _ : state)
     {
@@ -240,14 +249,15 @@ static void Sbench_insert(State& state)
         v.erase(v.begin());
         state.ResumeTiming();
     }
-    state.SetComplexityN(state.range(0));
+    state.SetComplexityN(N);
 }
 BENCHMARK(Sbench_insert)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
 static void Sbench_erase(State& state)
 {
+    auto N = state.range(0);
     Small tab[10];
-    vector<Small> v;
+    vector<Small> v(N);
     for (int i = 0; i < 10; i++)
     {
         tab[i].data[0] = rand();
@@ -265,14 +275,15 @@ static void Sbench_erase(State& state)
 
         DoNotOptimize(v.erase(it));
     }
-    state.SetComplexityN(state.range(0));
+    state.SetComplexityN(N);
 }
 BENCHMARK(Sbench_erase)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
 static void Sbench_pushback(State& state)
 {
+    auto N = state.range(0);
     Small A{};
-    vector<Small> v = {};
+    vector<Small> v(N);
 
     for(auto _ : state)
     {
@@ -284,7 +295,7 @@ static void Sbench_pushback(State& state)
         v.pop_back();
         state.ResumeTiming();
     }
-    state.SetComplexityN(state.range(0));
+    state.SetComplexityN(N);
 }
 BENCHMARK(Sbench_pushback)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
@@ -292,7 +303,7 @@ static void Sbench_popback(State& state)
 {
     auto N = state.range(0);
     Small A{};
-    vector<Small> v = {};
+    vector<Small> v(N);
 
     for(auto _ : state)
     {
@@ -319,7 +330,9 @@ static void Sbench_resize(State& state)
         int num = rand()%10;
         state.ResumeTiming();
 
+        DoNotOptimize(v.data());
         v.resize(num);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -330,8 +343,8 @@ static void Sbench_swap(State& state)
     auto N = state.range(0);
     Small tab[N];
     Small tab2[N];
-    vector<Small> v;
-    vector<Small> w;
+    vector<Small> v(N);
+    vector<Small> w(N);
     for (int i = 0; i < N; i++)
     {
         tab[i].data[0] = rand();
@@ -343,7 +356,9 @@ static void Sbench_swap(State& state)
 
     for(auto _ : state)
     {
+        DoNotOptimize(v.data());
         v.swap(w);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
