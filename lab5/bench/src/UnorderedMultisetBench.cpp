@@ -21,7 +21,7 @@ static void Sbench_empty(State& state)
     }
     for(auto _: state)
     {
-        u.empty();
+        DoNotOptimize(u.empty());
     }
     state.SetComplexityN(N);
 }
@@ -39,7 +39,7 @@ static void Sbench_size(State& state)
     }
     for(auto _: state)
     {
-        u.size();
+        DoNotOptimize(u.size());
     }
     state.SetComplexityN(N);
 }
@@ -57,7 +57,7 @@ static void Sbench_maxsize(State& state)
     }
     for(auto _: state)
     {
-        u.max_size();
+        DoNotOptimize(u.max_size());
     }
     state.SetComplexityN(N);
 }
@@ -94,10 +94,11 @@ static void Sbench_insert(State& state)
 
     for(auto _: state)
     {
-        u.insert(A);
+        DoNotOptimize(u.insert(A));
 
         state.PauseTiming();
         u.erase(A);
+        A.data[0] = rand();
         state.ResumeTiming();
     }
     state.SetComplexityN(N);
@@ -109,15 +110,16 @@ static void Sbench_erase(State& state)
     auto N = state.range(0);
     unordered_multiset<Small> u;
     Small A{};
-    A.data[0] = rand();
+
 
     for(auto _: state)
     {
         state.PauseTiming();
+        A.data[0] = rand();
         u.insert(A);
         state.ResumeTiming();
 
-        u.erase(A);
+        DoNotOptimize(u.erase(A));
     }
     state.SetComplexityN(N);
 }
@@ -157,7 +159,8 @@ static void Sbench_count(State& state)
     }
     for(auto _: state)
     {
-        u.count(A[0]);
+        int num = rand()%N;
+        DoNotOptimize(u.count(A[num]));
     }
     state.SetComplexityN(N);
 }
@@ -175,7 +178,8 @@ static void Sbench_find(State& state)
     }
     for(auto _: state)
     {
-        u.find(A[0]);
+        int num = rand()%N;
+        DoNotOptimize(u.find(A[num]));
     }
     state.SetComplexityN(N);
 }
@@ -193,7 +197,8 @@ static void Sbench_equalrange(State& state)
     }
     for(auto _: state)
     {
-        u.equal_range(A[0]);
+        int num = rand()%N;
+        DoNotOptimize(u.equal_range(A[num]));
     }
     state.SetComplexityN(N);
 }

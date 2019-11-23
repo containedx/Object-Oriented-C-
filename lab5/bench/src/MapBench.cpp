@@ -14,18 +14,15 @@ static void Sbench_at(State& state)
 {
     auto N = state.range(0);
     map <Small, Small> m{};
-    Small A[N];
-    Small B[N];
-    for(int i=0; i<N; i++)
-    {
-        A[i].data[0] = rand();
-        B[i].data[0] = rand();
-        m.insert({A[i],B[i]});
-    }
+    Small A{};
+    Small B{};
+    A.data[0] = rand();
+    B.data[0] = rand();
+    m.insert({A,B});
 
     for(auto _: state)
     {
-        m.at(A[0]);
+       DoNotOptimize( m.at(A));
     }
     state.SetComplexityN(N);
 }
@@ -36,18 +33,15 @@ static void Sbench_operator(State& state)
 {
     auto N = state.range(0);
     map <Small, Small> m{};
-    Small A[N];
-    Small B[N];
-    for(int i=0; i<N; i++)
-    {
-        A[i].data[0] = rand();
-        B[i].data[0] = rand();
-        m.insert({A[i],B[i]});
-    }
+    Small A{};
+    Small B{};
+    A.data[0] = rand();
+    B.data[0] = rand();
+    m.insert({A,B});
 
     for(auto _: state)
     {
-        m[A[0]];
+        DoNotOptimize(m[A]);
     }
     state.SetComplexityN(N);
 }
@@ -68,7 +62,7 @@ static void Sbench_empty(State& state)
 
     for(auto _: state)
     {
-        m.empty();
+        DoNotOptimize(m.empty());
     }
     state.SetComplexityN(N);
 }
@@ -89,7 +83,7 @@ static void Sbench_size(State& state)
 
     for(auto _: state)
     {
-        m.size();
+        DoNotOptimize(m.size());
     }
     state.SetComplexityN(N);
 }
@@ -110,7 +104,7 @@ static void Sbench_maxsize(State& state)
 
     for(auto _: state)
     {
-        m.max_size();
+        DoNotOptimize(m.max_size());
     }
     state.SetComplexityN(N);
 }
@@ -151,7 +145,7 @@ static void Sbench_insert(State& state)
 
     for(auto _: state)
     {
-        m.insert({A,B});
+        DoNotOptimize(m.insert({A,B}));
 
         state.PauseTiming();
         m.erase(A);
@@ -177,7 +171,7 @@ static void Sbench_erase(State& state)
         m.insert({A,B});
         state.ResumeTiming();
 
-        m.erase(A);
+        DoNotOptimize(m.erase(A));
     }
     state.SetComplexityN(N);
 }
@@ -221,7 +215,8 @@ static void Sbench_count(State& state)
 
     for(auto _: state)
     {
-        m.count(A[0]);
+        int num = rand()%N;
+        DoNotOptimize(m.count(A[num]));
     }
     state.SetComplexityN(N);
 }
@@ -242,7 +237,8 @@ static void Sbench_find(State& state)
 
     for(auto _: state)
     {
-        m.find(A[5]);
+        int num = rand()%N;
+        DoNotOptimize(m.find(A[N]));
     }
     state.SetComplexityN(N);
 }
@@ -263,7 +259,8 @@ static void Sbench_equalrange(State& state)
 
     for(auto _: state)
     {
-        m.equal_range(B[5]);
+        int num = rand()%N;
+        DoNotOptimize(m.equal_range(A[num]));
     }
     state.SetComplexityN(N);
 }
@@ -284,7 +281,8 @@ static void Sbench_lowerbound(State& state)
 
     for(auto _: state)
     {
-        m.lower_bound(A[5]);
+        int num = rand()%N;
+        DoNotOptimize(m.lower_bound(A[num]));
     }
     state.SetComplexityN(N);
 }
@@ -305,7 +303,8 @@ static void Sbench_upperbound(State& state)
 
     for(auto _: state)
     {
-        m.upper_bound(A[0]);
+        int num = rand()%N;
+        DoNotOptimize(m.upper_bound(A[num]));
     }
     state.SetComplexityN(N);
 }

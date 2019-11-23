@@ -13,17 +13,14 @@ using namespace std;
 static void Sbench_at(State& state)
 {
     auto N = state.range(0);
-    Small tab[N];
     vector<Small> v;
-    for (int i = 0; i < N; i++)
-    {
-        tab[i].data[0] = rand();
-        v.push_back(tab[i]);
-    }
+    Small A{};
+    A.data[0]=rand();
+    v.push_back(A);
 
     for(auto _ : state)
     {
-        v.at(0);
+        DoNotOptimize(v.at(0));
     }
     state.SetComplexityN(N);
 }
@@ -42,7 +39,7 @@ static void Sbench_operator(State& state)
 
     for(auto _ : state)
     {
-        v[0];
+        DoNotOptimize(v[0]);
     }
     state.SetComplexityN(N);
 }
@@ -61,7 +58,7 @@ static void Sbench_front(State& state)
 
     for(auto _ : state)
     {
-        v.front();
+        DoNotOptimize(v.front());
     }
     state.SetComplexityN(N);
 }
@@ -80,7 +77,7 @@ static void Sbench_back(State& state)
 
     for(auto _ : state)
     {
-        v.back();
+        DoNotOptimize(v.back());
     }
     state.SetComplexityN(N);
 }
@@ -99,7 +96,7 @@ static void Sbench_data(State& state)
 
     for(auto _ : state)
     {
-        v.data();
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(N);
 }
@@ -112,7 +109,7 @@ static void Sbench_empty(State& state)
 
     for(auto _ : state)
     {
-        v.empty();
+        DoNotOptimize(v.empty());
     }
     state.SetComplexityN(state.range(0));
 }
@@ -131,7 +128,7 @@ static void Sbench_size(State& state)
 
     for(auto _ : state)
     {
-        v.size();
+        DoNotOptimize(v.size());
     }
     state.SetComplexityN(N);
 }
@@ -150,7 +147,7 @@ static void Sbench_maxsize(State& state)
 
     for(auto _ : state)
     {
-        v.max_size();
+        DoNotOptimize(v.max_size());
     }
     state.SetComplexityN(N);
 }
@@ -183,7 +180,7 @@ static void Sbench_capacity(State& state)
 
     for(auto _ : state)
     {
-        v.capacity();
+        DoNotOptimize(v.capacity());
     }
     state.SetComplexityN(N);
 }
@@ -197,7 +194,8 @@ static void Sbench_shrink(State& state)
     {
         state.PauseTiming();
         vector<Small> v(N);
-        v.resize(10);
+        int num = rand()%10;
+        v.resize(num);
         state.ResumeTiming();
 
         v.shrink_to_fit();
@@ -236,7 +234,7 @@ static void Sbench_insert(State& state)
 
     for(auto _ : state)
     {
-        v.insert(v.begin(), A);
+        DoNotOptimize(v.insert(v.begin(), A));
 
         state.PauseTiming();
         v.erase(v.begin());
@@ -265,7 +263,7 @@ static void Sbench_erase(State& state)
         v.insert(it, A);
         state.ResumeTiming();
 
-        v.erase(it);
+        DoNotOptimize(v.erase(it));
     }
     state.SetComplexityN(state.range(0));
 }
@@ -278,7 +276,9 @@ static void Sbench_pushback(State& state)
 
     for(auto _ : state)
     {
+        DoNotOptimize(v.data());
         v.push_back(A);
+        ClobberMemory();
 
         state.PauseTiming();
         v.pop_back();
@@ -292,13 +292,15 @@ static void Sbench_popback(State& state)
 {
     auto N = state.range(0);
     Small A{};
-    A.data[0] = rand();
     vector<Small> v = {};
 
     for(auto _ : state)
     {
         state.PauseTiming();
+        A.data[0] = rand();
+        DoNotOptimize(v.data());
         v.push_back(A);
+        ClobberMemory();
         state.ResumeTiming();
 
         v.pop_back();
@@ -314,9 +316,10 @@ static void Sbench_resize(State& state)
     {
         state.PauseTiming();
         vector<Small>v(N);
+        int num = rand()%10;
         state.ResumeTiming();
 
-        v.resize(3);
+        v.resize(num);
     }
     state.SetComplexityN(N);
 }
