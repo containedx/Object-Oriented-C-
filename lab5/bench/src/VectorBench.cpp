@@ -166,6 +166,7 @@ static void Sbench_reserve(State& state)
     {
         auto n = rand()%10;
         v.reserve(n);
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(state.range(0));
 }
@@ -202,9 +203,9 @@ static void Sbench_shrink(State& state)
         v.resize(num);
         state.ResumeTiming();
 
-        DoNotOptimize(v.data());
         v.shrink_to_fit();
-        ClobberMemory();
+        DoNotOptimize(v.data());
+
     }
     state.SetComplexityN(N);
 }
@@ -223,13 +224,14 @@ static void Sbench_clear(State& state)
         for (int i = 0; i < 10; i++)
         {
             tab[i].data[0] = rand();
+            DoNotOptimize(v.data());
             v.push_back(tab[i]);
+            ClobberMemory();
         }
         state.ResumeTiming();
 
-        DoNotOptimize(v.data());
         v.clear();
-        ClobberMemory();
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(N);
 }
@@ -309,12 +311,11 @@ static void Sbench_popback(State& state)
     {
         state.PauseTiming();
         A.data[0] = rand();
-        DoNotOptimize(v.data());
         v.push_back(A);
-        ClobberMemory();
         state.ResumeTiming();
 
         v.pop_back();
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(N);
 }
@@ -330,9 +331,8 @@ static void Sbench_resize(State& state)
         int num = rand()%10;
         state.ResumeTiming();
 
-        DoNotOptimize(v.data());
         v.resize(num);
-        ClobberMemory();
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(N);
 }
