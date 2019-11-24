@@ -7,73 +7,115 @@
 ## MAP
 
 `at`
-O(lgN)
+
+expected: O(lgN)
+
+my result: O(lgN)
 
  ![](output/PLOTS/map_at.png)
 
  
 `operator[]`
-O(lgN)
+
+expected: O(lgN)
+
+my result: O(lgN)
 
  ![](output/PLOTS/map_operator.png)
 
 `empty`
-O(1)
+
+expected: O(1)
+
+my result: O(1)
 
  ![](output/PLOTS/map_empty.png)
 
 `size`
-O(1)
+
+expected: O(1)
+
+my result: O(1)
 
  ![](output/PLOTS/map_size.png)
 
 `max_size`
-O(1)
+
+expected: O(1)
+
+my result: O(1)
 
  ![](output/PLOTS/map_maxsize.png)
 
 `clear`
-O(n)
+
+expected: O(n)
+
+my result: O(lgN)
 
  ![](output/PLOTS/map_clear.png)
 
 `insert`
-lgN / amortized constant
+
+expected: lgN / amortized O(1)
+
+my result: O(1)
 
  ![](output/PLOTS/map_insert.png)
 
 `erase`
-amortized constant/ log(size)
+
+expected: amortized constant/ log(size)
+
+my result: O(1)
 
  ![](output/PLOTS/map_erase.png)
 
 `swap`
-O(1)
+
+expected: O(1)
+
+my result: O(1)
 
  ![](output/PLOTS/map_swap.png)
 
 `count`
-O(lgN)
+
+expected: O(lgN)
+
+my result: O(lgN)
 
  ![](output/PLOTS/map_count.png)
 
 `find`
-O(lgN)
+
+expected: O(lgN)
+
+my result: O(lgN)
 
  ![](output/PLOTS/map_find.png)
 
 `equal_range`
-O(lgN)
+
+expected: O(lgN)
+
+my result: O(lgN)
 
  ![](output/PLOTS/map_equalrange.png)
 
 `lower_bound`
-O(lgN)
+
+expected: O(lgN)
+
+my result: O(lgN)
 
  ![](output/PLOTS/map_lowerbound.png)
  
 `upper_bound`
-O(lgN)
+
+expected: O(lgN)
+
+my results: O(lgN)
 
  ![](output/PLOTS/map_upperbound.png)
 
