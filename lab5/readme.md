@@ -8,59 +8,73 @@
 
 `at`
 O(lgN)
+
  ![](output/PLOTS/map_at.png)
- 
+
  
 `operator[]`
 O(lgN)
+
  ![](output/PLOTS/map_operator.png)
 
 `empty`
 O(1)
+
  ![](output/PLOTS/map_empty.png)
 
 `size`
 O(1)
+
  ![](output/PLOTS/map_size.png)
 
 `max_size`
 O(1)
+
  ![](output/PLOTS/map_maxsize.png)
 
 `clear`
 O(n)
+
  ![](output/PLOTS/map_clear.png)
 
 `insert`
 lgN / amortized constant
+
  ![](output/PLOTS/map_insert.png)
 
 `erase`
 amortized constant/ log(size)
+
  ![](output/PLOTS/map_erase.png)
 
 `swap`
 O(1)
+
  ![](output/PLOTS/map_swap.png)
 
 `count`
 O(lgN)
+
  ![](output/PLOTS/map_count.png)
 
 `find`
 O(lgN)
+
  ![](output/PLOTS/map_find.png)
 
 `equal_range`
 O(lgN)
+
  ![](output/PLOTS/map_equalrange.png)
 
 `lower_bound`
 O(lgN)
+
  ![](output/PLOTS/map_lowerbound.png)
  
 `upper_bound`
 O(lgN)
+
  ![](output/PLOTS/map_upperbound.png)
 
 
