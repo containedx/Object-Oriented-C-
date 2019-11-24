@@ -125,47 +125,77 @@ my results: O(lgN)
 `at` 
 O(1)
 
+![](output/PLOTS/vector_at.png)
+
 `operator[]`
 O(1)
+
+![](output/PLOTS/vector_operator.png)
 
 `front`
 O(1)
 
+![](output/PLOTS/vector_front.png)
+
 `back`
 O(1)
+
+![](output/PLOTS/vector_back.png)
 
 `empty`
 O(1)
 
+![](output/PLOTS/vector_empty.png)
+
 `size`
 O(1)
+
+![](output/PLOTS/vector_size.png)
 
 `max_size`
 O(1)
 
+![](output/PLOTS/vector_maxsize.png)
+
 `shrink_to_fit`
 linear O(n)
+
+![](output/PLOTS/vector_shrink.png)
 
 `clear`
 linear
 
+![](output/PLOTS/vector_clear.png)
+
 `insert`
 linear
+
+![](output/PLOTS/vector_insert.png)
 
 `erase`
 linear
 
+![](output/PLOTS/vector_erase.png)
+
 `push_back`
 amortized constant
+
+![](output/PLOTS/vector_pushback.png)
 
 `pop_back`
 O(1)
 
+![](output/PLOTS/vector_popback.png)
+
 `resize`
 linear
 
+![](output/PLOTS/vector_resize.png)
+
 `swap`
 O(1)
+
+![](output/PLOTS/vector_swap.png)
 
 
 
@@ -174,38 +204,72 @@ O(1)
 `empty`
 O(1)
 
+![](output/PLOTS/unorderedmultiset_empty.png)
+
 `size`
 O(1)
+
+![](output/PLOTS/unorderedmultiset_size.png)
+
 
 `max_size`
 O(1)
 
+![](output/PLOTS/unorderedmultiset_maxsize.png)
+
+
 `clear`
 linear
+
+![](output/PLOTS/unorderedmultiset_clear.png)
+
 
 `insert`
 O(1) 
 
+![](output/PLOTS/unorderedmultiset_insert.png)
+
+
 `erase`
 O(1)
+
+![](output/PLOTS/unorderedmultiset_erase.png)
+
 
 `swap`
 O(1)
 
+![](output/PLOTS/unorderedmultiset_swap.png)
+
+
 `count`
 linear O(n)
+
+![](output/PLOTS/unorderedmultiset_count.png)
+
 
 `find`
 O(1) at worst linear
 
+![](output/PLOTS/unorderedmultiset_find.png)
+
+
 `equal_range`
 linear O(n)
+
+![](output/PLOTS/unorderedmultiset_equalrange.png)
+
 
 `rehash`
 O(n) worst ^2
 
+![](output/PLOTS/unorderedmultiset_rehash.png)
+
+
 `reserve`
 O(n)
+
+![](output/PLOTS/unorderedmultiset_reserve.png)
 
 
 
