@@ -18,7 +18,7 @@ static void Mbench_at(State& state)
 
     for(auto _: state)
     {
-        m.at(A[0]);
+       DoNotOptimize( m.at(A[0]));
     }
     state.SetComplexityN(N);
 }
@@ -40,7 +40,7 @@ static void Mbench_operator(State& state)
 
     for(auto _: state)
     {
-        m[A[0]];
+        DoNotOptimize(m[A[0]]);
     }
     state.SetComplexityN(N);
 }
@@ -61,7 +61,7 @@ static void Mbench_empty(State& state)
 
     for(auto _: state)
     {
-        m.empty();
+        DoNotOptimize(m.empty());
     }
     state.SetComplexityN(N);
 }
@@ -82,7 +82,7 @@ static void Mbench_size(State& state)
 
     for(auto _: state)
     {
-        m.size();
+        DoNotOptimize(m.size());
     }
     state.SetComplexityN(N);
 }
@@ -103,7 +103,7 @@ static void Mbench_maxsize(State& state)
 
     for(auto _: state)
     {
-        m.max_size();
+       DoNotOptimize( m.max_size());
     }
     state.SetComplexityN(N);
 }
@@ -131,6 +131,7 @@ static void Mbench_clear(State& state)
         state.ResumeTiming();
 
         m.clear();
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -147,7 +148,7 @@ static void Mbench_insert(State& state)
 
     for(auto _: state)
     {
-        m.insert({A,B});
+        DoNotOptimize(m.insert({A,B}));
 
         state.PauseTiming();
         m.erase(A);
@@ -173,7 +174,7 @@ static void Mbench_erase(State& state)
         m.insert({A,B});
         state.ResumeTiming();
 
-        m.erase(A);
+        DoNotOptimize(m.erase(A));
     }
     state.SetComplexityN(N);
 }
@@ -197,6 +198,7 @@ static void Mbench_swap(State& state)
     for(auto _: state)
     {
         m.swap(w);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -217,7 +219,7 @@ static void Mbench_count(State& state)
 
     for(auto _: state)
     {
-        m.count(A[0]);
+        DoNotOptimize(m.count(A[0]));
     }
     state.SetComplexityN(N);
 }
@@ -238,7 +240,7 @@ static void Mbench_find(State& state)
 
     for(auto _: state)
     {
-        m.find(A[5]);
+        DoNotOptimize(m.find(A[5]));
     }
     state.SetComplexityN(N);
 }
@@ -259,7 +261,7 @@ static void Mbench_equalrange(State& state)
 
     for(auto _: state)
     {
-        m.equal_range(B[5]);
+        DoNotOptimize(m.equal_range(B[5]));
     }
     state.SetComplexityN(N);
 }
@@ -280,7 +282,7 @@ static void Mbench_lowerbound(State& state)
 
     for(auto _: state)
     {
-        m.lower_bound(A[5]);
+        DoNotOptimize(m.lower_bound(A[5]));
     }
     state.SetComplexityN(N);
 }
@@ -301,7 +303,7 @@ static void Mbench_upperbound(State& state)
 
     for(auto _: state)
     {
-        m.upper_bound(A[0]);
+        DoNotOptimize(m.upper_bound(A[0]));
     }
     state.SetComplexityN(N);
 }

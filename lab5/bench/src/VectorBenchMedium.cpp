@@ -16,7 +16,7 @@ static void Mbench_at(State& state)
 
     for(auto _ : state)
     {
-        v.at(0);
+        DoNotOptimize(v.at(0));
     }
     state.SetComplexityN(N);
 }
@@ -35,7 +35,7 @@ static void Mbench_operator(State& state)
 
     for(auto _ : state)
     {
-        v[0];
+        DoNotOptimize(v[0]);
     }
     state.SetComplexityN(N);
 }
@@ -54,7 +54,7 @@ static void Mbench_front(State& state)
 
     for(auto _ : state)
     {
-        v.front();
+        DoNotOptimize(v.front());
     }
     state.SetComplexityN(N);
 }
@@ -73,7 +73,7 @@ static void Mbench_back(State& state)
 
     for(auto _ : state)
     {
-        v.back();
+        DoNotOptimize(v.back());
     }
     state.SetComplexityN(N);
 }
@@ -92,7 +92,7 @@ static void Mbench_data(State& state)
 
     for(auto _ : state)
     {
-        v.data();
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(N);
 }
@@ -105,7 +105,7 @@ static void Mbench_empty(State& state)
 
     for(auto _ : state)
     {
-        v.empty();
+        DoNotOptimize(v.empty());
     }
     state.SetComplexityN(state.range(0));
 }
@@ -124,7 +124,7 @@ static void Mbench_size(State& state)
 
     for(auto _ : state)
     {
-        v.size();
+        DoNotOptimize(v.size());
     }
     state.SetComplexityN(N);
 }
@@ -143,7 +143,7 @@ static void Mbench_maxsize(State& state)
 
     for(auto _ : state)
     {
-        v.max_size();
+        DoNotOptimize(v.max_size());
     }
     state.SetComplexityN(N);
 }
@@ -158,6 +158,7 @@ static void Mbench_reserve(State& state)
     {
         auto n = rand()%10;
         v.reserve(n);
+        ClobberMemory();
     }
     state.SetComplexityN(state.range(0));
 }
@@ -176,7 +177,7 @@ static void Mbench_capacity(State& state)
 
     for(auto _ : state)
     {
-        v.capacity();
+        DoNotOptimize(v.capacity());
     }
     state.SetComplexityN(N);
 }
@@ -194,7 +195,9 @@ static void Mbench_shrink(State& state)
         v.resize(n);
         state.ResumeTiming();
 
+        DoNotOptimize(v.data());
         v.shrink_to_fit();
+        ClobberMemory();
     }
     state.SetComplexityN(state.range(0));
 }
@@ -221,6 +224,7 @@ static void Mbench_clear(State& state)
         state.ResumeTiming();
 
         v.clear();
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -233,7 +237,7 @@ static void Mbench_insert(State& state)
 
     for(auto _ : state)
     {
-        v.insert(v.begin(), A);
+        DoNotOptimize(v.insert(v.begin(), A));
 
         state.PauseTiming();
         v.erase(v.begin());
@@ -263,7 +267,7 @@ static void Mbench_erase(State& state)
         v.insert(it, A);
         state.ResumeTiming();
 
-        v.erase(it);
+        DoNotOptimize(v.erase(it));
     }
     state.SetComplexityN(state.range(0));
 }
@@ -276,7 +280,9 @@ static void Mbench_pushback(State& state)
 
     for(auto _ : state)
     {
+        DoNotOptimize(v.data());
         v.push_back(A);
+        ClobberMemory();
 
         state.PauseTiming();
         v.pop_back();
@@ -300,6 +306,7 @@ static void Mbench_popback(State& state)
         state.ResumeTiming();
 
         v.pop_back();
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -316,6 +323,7 @@ static void Mbench_resize(State& state)
         state.ResumeTiming();
 
         v.resize(n);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -340,6 +348,7 @@ static void Mbench_swap(State& state)
     for(auto _ : state)
     {
         v.swap(w);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }

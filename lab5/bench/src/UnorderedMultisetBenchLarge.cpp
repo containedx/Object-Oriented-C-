@@ -3,20 +3,7 @@
 #include <unordered_set>
 using namespace std;
 
-static void Lbench_empty(State& state)
-{
-    auto N = state.range(0);
-    unordered_multiset<Large> u(N);
-
-    for(auto _: state)
-    {
-        u.empty();
-    }
-    state.SetComplexityN(N);
-}
-BENCHMARK(Lbench_empty)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
-
-static void Lbench_size(State& state)
+static void Mbench_empty(State& state)
 {
     auto N = state.range(0);
     unordered_multiset<Large> u;
@@ -28,13 +15,13 @@ static void Lbench_size(State& state)
     }
     for(auto _: state)
     {
-        u.size();
+        DoNotOptimize(u.empty());
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_size)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_empty)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_maxsize(State& state)
+static void Mbench_size(State& state)
 {
     auto N = state.range(0);
     unordered_multiset<Large> u;
@@ -46,13 +33,31 @@ static void Lbench_maxsize(State& state)
     }
     for(auto _: state)
     {
-        u.max_size();
+        DoNotOptimize(u.size());
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_maxsize)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_size)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_clear(State& state)
+static void Mbench_maxsize(State& state)
+{
+    auto N = state.range(0);
+    unordered_multiset<Large> u;
+    Large A[N];
+    for(int i=0; i<N; i++)
+    {
+        A[i].randomize();
+        u.insert(A[i]);
+    }
+    for(auto _: state)
+    {
+        DoNotOptimize( u.max_size());
+    }
+    state.SetComplexityN(N);
+}
+BENCHMARK(Mbench_maxsize)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+
+static void Mbench_clear(State& state)
 {
     auto N = state.range(0);
     unordered_multiset<Large> u;
@@ -72,12 +77,13 @@ static void Lbench_clear(State& state)
         state.ResumeTiming();
 
         u.clear();
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_clear)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_clear)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_insert(State& state)
+static void Mbench_insert(State& state)
 {
     auto N = state.range(0);
     unordered_multiset<Large> u;
@@ -86,7 +92,7 @@ static void Lbench_insert(State& state)
 
     for(auto _: state)
     {
-        u.insert(A);
+        DoNotOptimize(u.insert(A));
 
         state.PauseTiming();
         u.erase(A);
@@ -94,9 +100,9 @@ static void Lbench_insert(State& state)
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_insert)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_insert)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_erase(State& state)
+static void Mbench_erase(State& state)
 {
     auto N = state.range(0);
     unordered_multiset<Large> u;
@@ -109,13 +115,13 @@ static void Lbench_erase(State& state)
         u.insert(A);
         state.ResumeTiming();
 
-        u.erase(A);
+        DoNotOptimize(u.erase(A));
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_erase)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_erase)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_swap(State& state)
+static void Mbench_swap(State& state)
 {
     auto N = state.range(0);
     unordered_multiset<Large> u;
@@ -132,12 +138,13 @@ static void Lbench_swap(State& state)
     for(auto _: state)
     {
         u.swap(w);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_swap)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_swap)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_count(State& state)
+static void Mbench_count(State& state)
 {
     auto N = state.range(0);
     unordered_multiset<Large> u;
@@ -149,13 +156,13 @@ static void Lbench_count(State& state)
     }
     for(auto _: state)
     {
-        u.count(A[0]);
+        DoNotOptimize(u.count(A[0]));
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_count)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_count)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_find(State& state)
+static void Mbench_find(State& state)
 {
     auto N = state.range(0);
     unordered_multiset<Large> u;
@@ -167,13 +174,13 @@ static void Lbench_find(State& state)
     }
     for(auto _: state)
     {
-        u.find(A[0]);
+        DoNotOptimize(u.find(A[0]));
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_find)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_find)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_equalrange(State& state)
+static void Mbench_equalrange(State& state)
 {
     auto N = state.range(0);
     unordered_multiset<Large> u;
@@ -185,13 +192,13 @@ static void Lbench_equalrange(State& state)
     }
     for(auto _: state)
     {
-        u.equal_range(A[0]);
+        DoNotOptimize(u.equal_range(A[0]));
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_equalrange)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_equalrange)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_rehash(State& state)
+static void Mbench_rehash(State& state)
 {
     auto N = state.range(0);
     unordered_multiset<Large> u;
@@ -208,12 +215,13 @@ static void Lbench_rehash(State& state)
         state.ResumeTiming();
 
         u.rehash(num);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_rehash)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_rehash)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_reserve(State& state)
+static void Mbench_reserve(State& state)
 {
     auto N = state.range(0);
     unordered_multiset<Large> u;
@@ -230,7 +238,8 @@ static void Lbench_reserve(State& state)
         state.ResumeTiming();
 
         u.reserve(num);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_reserve)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_reserve)->RangeMultiplier(2)->Range(1, 1024)->Complexity();

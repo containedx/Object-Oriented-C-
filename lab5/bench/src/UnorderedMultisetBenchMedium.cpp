@@ -15,7 +15,7 @@ static void Mbench_empty(State& state)
     }
     for(auto _: state)
     {
-        u.empty();
+        DoNotOptimize(u.empty());
     }
     state.SetComplexityN(N);
 }
@@ -33,7 +33,7 @@ static void Mbench_size(State& state)
     }
     for(auto _: state)
     {
-        u.size();
+        DoNotOptimize(u.size());
     }
     state.SetComplexityN(N);
 }
@@ -51,7 +51,7 @@ static void Mbench_maxsize(State& state)
     }
     for(auto _: state)
     {
-        u.max_size();
+       DoNotOptimize( u.max_size());
     }
     state.SetComplexityN(N);
 }
@@ -77,6 +77,7 @@ static void Mbench_clear(State& state)
         state.ResumeTiming();
 
         u.clear();
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -91,7 +92,7 @@ static void Mbench_insert(State& state)
 
     for(auto _: state)
     {
-        u.insert(A);
+        DoNotOptimize(u.insert(A));
 
         state.PauseTiming();
         u.erase(A);
@@ -114,7 +115,7 @@ static void Mbench_erase(State& state)
         u.insert(A);
         state.ResumeTiming();
 
-        u.erase(A);
+        DoNotOptimize(u.erase(A));
     }
     state.SetComplexityN(N);
 }
@@ -137,6 +138,7 @@ static void Mbench_swap(State& state)
     for(auto _: state)
     {
         u.swap(w);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -154,7 +156,7 @@ static void Mbench_count(State& state)
     }
     for(auto _: state)
     {
-        u.count(A[0]);
+        DoNotOptimize(u.count(A[0]));
     }
     state.SetComplexityN(N);
 }
@@ -172,7 +174,7 @@ static void Mbench_find(State& state)
     }
     for(auto _: state)
     {
-        u.find(A[0]);
+        DoNotOptimize(u.find(A[0]));
     }
     state.SetComplexityN(N);
 }
@@ -190,7 +192,7 @@ static void Mbench_equalrange(State& state)
     }
     for(auto _: state)
     {
-        u.equal_range(A[0]);
+        DoNotOptimize(u.equal_range(A[0]));
     }
     state.SetComplexityN(N);
 }
@@ -213,6 +215,7 @@ static void Mbench_rehash(State& state)
         state.ResumeTiming();
 
         u.rehash(num);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
@@ -235,6 +238,7 @@ static void Mbench_reserve(State& state)
         state.ResumeTiming();
 
         u.reserve(num);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }

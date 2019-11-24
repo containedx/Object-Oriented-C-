@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-static void Lbench_at(State& state)
+static void Mbench_at(State& state)
 {
     auto N = state.range(0);
     Large tab[N];
@@ -16,13 +16,13 @@ static void Lbench_at(State& state)
 
     for(auto _ : state)
     {
-        v.at(0);
+        DoNotOptimize(v.at(0));
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_at)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_at)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_operator(State& state)
+static void Mbench_operator(State& state)
 {
     auto N = state.range(0);
     Large tab[N];
@@ -35,13 +35,13 @@ static void Lbench_operator(State& state)
 
     for(auto _ : state)
     {
-        v[0];
+        DoNotOptimize(v[0]);
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_operator)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_operator)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_front(State& state)
+static void Mbench_front(State& state)
 {
     auto N = state.range(0);
     Large tab[N];
@@ -54,13 +54,13 @@ static void Lbench_front(State& state)
 
     for(auto _ : state)
     {
-        v.front();
+        DoNotOptimize(v.front());
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_front)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_front)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_back(State& state)
+static void Mbench_back(State& state)
 {
     auto N = state.range(0);
     Large tab[N];
@@ -73,13 +73,13 @@ static void Lbench_back(State& state)
 
     for(auto _ : state)
     {
-        v.back();
+        DoNotOptimize(v.back());
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_back)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_back)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_data(State& state)
+static void Mbench_data(State& state)
 {
     auto N = state.range(0);
     Large tab[N];
@@ -92,26 +92,26 @@ static void Lbench_data(State& state)
 
     for(auto _ : state)
     {
-        v.data();
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_data)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_data)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_empty(State& state)
+static void Mbench_empty(State& state)
 {
     Large A{};
     vector<Large> v = {A};
 
     for(auto _ : state)
     {
-        v.empty();
+        DoNotOptimize(v.empty());
     }
     state.SetComplexityN(state.range(0));
 }
-BENCHMARK(Lbench_empty)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_empty)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_size(State& state)
+static void Mbench_size(State& state)
 {
     auto N = state.range(0);
     Large tab[N];
@@ -124,13 +124,13 @@ static void Lbench_size(State& state)
 
     for(auto _ : state)
     {
-        v.size();
+        DoNotOptimize(v.size());
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_size)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_size)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_maxsize(State& state)
+static void Mbench_maxsize(State& state)
 {
     auto N = state.range(0);
     Large tab[N];
@@ -143,13 +143,13 @@ static void Lbench_maxsize(State& state)
 
     for(auto _ : state)
     {
-        v.max_size();
+        DoNotOptimize(v.max_size());
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_maxsize)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_maxsize)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_reserve(State& state)
+static void Mbench_reserve(State& state)
 {
     Large A{};
     vector<Large> v = {A};
@@ -158,12 +158,13 @@ static void Lbench_reserve(State& state)
     {
         auto n = rand()%10;
         v.reserve(n);
+        ClobberMemory();
     }
     state.SetComplexityN(state.range(0));
 }
-BENCHMARK(Lbench_reserve)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_reserve)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_capacity(State& state)
+static void Mbench_capacity(State& state)
 {
     auto N = state.range(0);
     Large tab[N];
@@ -176,13 +177,13 @@ static void Lbench_capacity(State& state)
 
     for(auto _ : state)
     {
-        v.capacity();
+        DoNotOptimize(v.capacity());
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_capacity)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_capacity)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_shrink(State& state)
+static void Mbench_shrink(State& state)
 {
     auto N = state.range(0);
 
@@ -194,13 +195,15 @@ static void Lbench_shrink(State& state)
         v.resize(n);
         state.ResumeTiming();
 
+        DoNotOptimize(v.data());
         v.shrink_to_fit();
+        ClobberMemory();
     }
     state.SetComplexityN(state.range(0));
 }
-BENCHMARK(Lbench_shrink)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_shrink)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_clear(State& state)
+static void Mbench_clear(State& state)
 {
     auto N = state.range(0);
     Large tab[N];
@@ -221,19 +224,20 @@ static void Lbench_clear(State& state)
         state.ResumeTiming();
 
         v.clear();
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_clear)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_clear)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_insert(State& state)
+static void Mbench_insert(State& state)
 {
     Large A{};
     vector<Large> v = {};
 
     for(auto _ : state)
     {
-        v.insert(v.begin(), A);
+        DoNotOptimize(v.insert(v.begin(), A));
 
         state.PauseTiming();
         v.erase(v.begin());
@@ -241,9 +245,9 @@ static void Lbench_insert(State& state)
     }
     state.SetComplexityN(state.range(0));
 }
-BENCHMARK(Lbench_insert)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_insert)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_erase(State& state)
+static void Mbench_erase(State& state)
 {
     Large tab[10];
     vector<Large> v;
@@ -263,20 +267,22 @@ static void Lbench_erase(State& state)
         v.insert(it, A);
         state.ResumeTiming();
 
-        v.erase(it);
+        DoNotOptimize(v.erase(it));
     }
     state.SetComplexityN(state.range(0));
 }
-BENCHMARK(Lbench_erase)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_erase)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_pushback(State& state)
+static void Mbench_pushback(State& state)
 {
     Large A{};
     vector<Large> v = {};
 
     for(auto _ : state)
     {
+        DoNotOptimize(v.data());
         v.push_back(A);
+        ClobberMemory();
 
         state.PauseTiming();
         v.pop_back();
@@ -284,9 +290,9 @@ static void Lbench_pushback(State& state)
     }
     state.SetComplexityN(state.range(0));
 }
-BENCHMARK(Lbench_pushback)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_pushback)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_popback(State& state)
+static void Mbench_popback(State& state)
 {
     auto N = state.range(0);
     Large A{};
@@ -300,12 +306,13 @@ static void Lbench_popback(State& state)
         state.ResumeTiming();
 
         v.pop_back();
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_popback)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_popback)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_resize(State& state)
+static void Mbench_resize(State& state)
 {
     auto N = state.range(0);
     for(auto _ : state)
@@ -316,12 +323,13 @@ static void Lbench_resize(State& state)
         state.ResumeTiming();
 
         v.resize(n);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_resize)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_resize)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
 
-static void Lbench_swap(State& state)
+static void Mbench_swap(State& state)
 {
     auto N = state.range(0);
     Large tab[N];
@@ -340,7 +348,8 @@ static void Lbench_swap(State& state)
     for(auto _ : state)
     {
         v.swap(w);
+        ClobberMemory();
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Lbench_swap)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Mbench_swap)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
