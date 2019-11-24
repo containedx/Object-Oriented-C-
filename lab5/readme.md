@@ -1,8 +1,70 @@
-#STL PERFORMANCE ANALYSIS
-######assigned containers: vector, map, unordered_multiset 
+# STL PERFORMANCE ANALYSIS
 
 
-##VECTOR
+###### assigned containers: vector, map, unordered_multiset 
+
+
+## MAP
+
+`at`
+O(lgN)
+ ![](output/PLOTS/map _ at.png)
+ 
+ 
+`operator[]`
+O(lgN)
+ ![](output/PLOTS/map _ operator.png)
+
+`empty`
+O(1)
+ ![](output/PLOTS/map_empty.png)
+
+`size`
+O(1)
+ ![](output/PLOTS/map _ size.png)
+
+`max_size`
+O(1)
+ ![](output/PLOTS/map_maxsize.png)
+
+`clear`
+O(n)
+ ![](output/PLOTS/map _ clear.png)
+
+`insert`
+lgN / amortized constant
+ ![](output/PLOTS/map _ insert.png)
+
+`erase`
+amortized constant/ log(size)
+ ![](output/PLOTS/map _ erase.png)
+
+`swap`
+O(1)
+ ![](output/PLOTS/map _ swap.png)
+
+`count`
+O(lgN)
+ ![](output/PLOTS/map _ count.png)
+
+`find`
+O(lgN)
+ ![](output/PLOTS/map _ find.png)
+
+`equal_range`
+O(lgN)
+ ![](output/PLOTS/map _ equalrange.png)
+
+`lower_bound`
+O(lgN)
+ ![](output/PLOTS/map _ lowerbound.png)
+ 
+`upper_bound`
+O(lgN)
+ ![](output/PLOTS/map _ upperbound.png)
+
+
+## VECTOR
 
 `at` 
 O(1)
@@ -50,52 +112,8 @@ linear
 O(1)
 
 
-##MAP
 
-`at`
-O(lgN)
- 
-`operator[]`
-O(lgN)
-
-`empty`
-O(1)
-
-`size`
-O(1)
-
-`max_size`
-O(1)
-
-`clear`
-linear
-
-`insert`
-lgN / amortized constant
-
-`erase`
-amortized constant/ log(size)
-
-`swap`
-O(1)
-
-`count`
-O(lgN)
-
-`find`
-O(lgN)
-
-`equal_range`
-O(lgN)
-
-`lower_bound`
-O(lgN)
-
-`upper_bound`
-O(lgN)
-
-
-##UNORDERED MULTISET
+## UNORDERED MULTISET
 
 `empty`
 O(1)
