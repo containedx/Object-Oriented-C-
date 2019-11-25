@@ -137,153 +137,261 @@ my results: O(lgN)
 ## VECTOR
 
 `at` 
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_at.png)
+![](output/PLOTS/RELEASE_vector_at.png)
 
 `operator[]`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_operator.png)
+![](output/PLOTS/RELEASE_vector_operator.png)
 
 `front`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_front.png)
+![](output/PLOTS/RELEASE_vector_front.png)
 
 `back`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_back.png)
+![](output/PLOTS/RELEASE_vector_back.png)
 
 `empty`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_empty.png)
+![](output/PLOTS/RELEASE_vector_empty.png)
 
 `size`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_size.png)
+![](output/PLOTS/RELEASE_vector_size.png)
 
 `max_size`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_maxsize.png)
+![](output/PLOTS/RELEASE_vector_maxsize.png)
 
 `shrink_to_fit`
-linear O(n)
+
+expected:  O(n)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_shrink.png)
+![](output/PLOTS/RELEASE_vector_shrink.png)
 
 `clear`
-linear
+
+expected: O(n)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_clear.png)
+![](output/PLOTS/RELEASE_vector_clear.png)
 
 `insert`
-linear
+
+expected: O(n)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_insert.png)
+![](output/PLOTS/RELEASE_vector_insert.png)
 
 `erase`
-linear
+
+expected: O(n)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_erase.png)
+![](output/PLOTS/RELEASE_vector_erase.png)
 
 `push_back`
-amortized constant
+
+expected: amortized constant
+
+my results: O(1)
 
 ![](output/PLOTS/vector_pushback.png)
+![](output/PLOTS/RELEASE_vector_pushback.png)
 
 `pop_back`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_popback.png)
+![](output/PLOTS/RELEASE_vector_popback.png)
 
 `resize`
-linear
+
+expected: O(n)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_resize.png)
+![](output/PLOTS/RELEASE_vector_resize.png)
 
 `swap`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/vector_swap.png)
+![](output/PLOTS/RELEASE_vector_swap.png)
 
 
 
 ## UNORDERED MULTISET
 
 `empty`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/unorderedmultiset_empty.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_empty.png)
 
 `size`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/unorderedmultiset_size.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_size.png)
 
 
 `max_size`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/unorderedmultiset_maxsize.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_maxsize.png)
 
 
 `clear`
-linear
+
+expected: O(n)
+
+my results: O(n)
 
 ![](output/PLOTS/unorderedmultiset_clear.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_clear.png)
 
 
 `insert`
-O(1) 
+
+expected: O(1) 
+
+my results: O(1)
 
 ![](output/PLOTS/unorderedmultiset_insert.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_insert.png)
 
 
 `erase`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/unorderedmultiset_erase.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_erase.png)
 
 
 `swap`
-O(1)
+
+expected: O(1)
+
+my results: O(1)
 
 ![](output/PLOTS/unorderedmultiset_swap.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_swap.png)
 
 
 `count`
-linear O(n)
+
+expected:  O(n)
+
+my results: O(n)
 
 ![](output/PLOTS/unorderedmultiset_count.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_count.png)
 
 
 `find`
-O(1) at worst linear
+
+expected: O(1) at worst linear
+
+my results: O(1)
 
 ![](output/PLOTS/unorderedmultiset_find.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_find.png)
 
 
 `equal_range`
-linear O(n)
+
+expected: linear O(n)
+
+my results: O(1)
 
 ![](output/PLOTS/unorderedmultiset_equalrange.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_equalrange.png)
 
 
 `rehash`
-O(n) worst ^2
+
+expected: O(n) worst ^2
+
+my results: O(1)
 
 ![](output/PLOTS/unorderedmultiset_rehash.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_rehash.png)
 
 
 `reserve`
-O(n)
+
+expected: O(n)
+
+my results: O(1)
 
 ![](output/PLOTS/unorderedmultiset_reserve.png)
+![](output/PLOTS/RELEASE_unorderedmultiset_reserve.png)
 
 
 
