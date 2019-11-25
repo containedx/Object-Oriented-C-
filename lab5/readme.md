@@ -12,7 +12,8 @@ expected: O(lgN)
 
 my result: O(lgN)
 
- ![](output/PLOTS/map_at.png)
+ ![](output/PLOTS/map_at.png)  
+ ![](output/PLOTS/RELEASE_map_at.png)
 
  
 `operator[]`
@@ -22,6 +23,7 @@ expected: O(lgN)
 my result: O(lgN)
 
  ![](output/PLOTS/map_operator.png)
+  ![](output/PLOTS/RELEASE_map_operator.png)
 
 `empty`
 
@@ -30,6 +32,7 @@ expected: O(1)
 my result: O(1)
 
  ![](output/PLOTS/map_empty.png)
+  ![](output/PLOTS/RELEASE_map_empty.png)
 
 `size`
 
@@ -38,6 +41,7 @@ expected: O(1)
 my result: O(1)
 
  ![](output/PLOTS/map_size.png)
+  ![](output/PLOTS/RELEASE_map_size.png)
 
 `max_size`
 
@@ -46,6 +50,7 @@ expected: O(1)
 my result: O(1)
 
  ![](output/PLOTS/map_maxsize.png)
+  ![](output/PLOTS/RELEASE_map_maxsize.png)
 
 `clear`
 
@@ -54,6 +59,7 @@ expected: O(n)
 my result: O(lgN)
 
  ![](output/PLOTS/map_clear.png)
+  ![](output/PLOTS/RELEASE_map_clear.png)
 
 `insert`
 
@@ -62,6 +68,7 @@ expected: lgN / amortized O(1)
 my result: O(1)
 
  ![](output/PLOTS/map_insert.png)
+  ![](output/PLOTS/RELEASE_map_insert.png)
 
 `erase`
 
@@ -70,6 +77,7 @@ expected: amortized constant/ log(size)
 my result: O(1)
 
  ![](output/PLOTS/map_erase.png)
+  ![](output/PLOTS/RELEASE_map_erase.png)
 
 `swap`
 
@@ -78,6 +86,7 @@ expected: O(1)
 my result: O(1)
 
  ![](output/PLOTS/map_swap.png)
+  ![](output/PLOTS/RELEASE_map_swap.png)
 
 `count`
 
@@ -86,6 +95,7 @@ expected: O(lgN)
 my result: O(lgN)
 
  ![](output/PLOTS/map_count.png)
+  ![](output/PLOTS/RELEASE_map_count.png)
 
 `find`
 
@@ -94,6 +104,7 @@ expected: O(lgN)
 my result: O(lgN)
 
  ![](output/PLOTS/map_find.png)
+  ![](output/PLOTS/RELEASE_map_find.png)
 
 `equal_range`
 
@@ -102,6 +113,7 @@ expected: O(lgN)
 my result: O(lgN)
 
  ![](output/PLOTS/map_equalrange.png)
+  ![](output/PLOTS/RELEASE_map_equalrange.png)
 
 `lower_bound`
 
@@ -110,6 +122,7 @@ expected: O(lgN)
 my result: O(lgN)
 
  ![](output/PLOTS/map_lowerbound.png)
+  ![](output/PLOTS/RELEASE_map_lowerbound.png)
  
 `upper_bound`
 
@@ -118,6 +131,7 @@ expected: O(lgN)
 my results: O(lgN)
 
  ![](output/PLOTS/map_upperbound.png)
+  ![](output/PLOTS/RELEASE_map_upperbound.png)
 
 
 ## VECTOR
