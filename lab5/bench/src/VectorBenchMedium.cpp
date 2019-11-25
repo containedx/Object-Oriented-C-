@@ -158,7 +158,7 @@ static void Mbench_reserve(State& state)
     {
         auto n = rand()%10;
         v.reserve(n);
-        ClobberMemory();
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(state.range(0));
 }
@@ -195,9 +195,9 @@ static void Mbench_shrink(State& state)
         v.resize(n);
         state.ResumeTiming();
 
-        DoNotOptimize(v.data());
+
         v.shrink_to_fit();
-        ClobberMemory();
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(state.range(0));
 }
@@ -224,7 +224,7 @@ static void Mbench_clear(State& state)
         state.ResumeTiming();
 
         v.clear();
-        ClobberMemory();
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(N);
 }
@@ -306,7 +306,7 @@ static void Mbench_popback(State& state)
         state.ResumeTiming();
 
         v.pop_back();
-        ClobberMemory();
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(N);
 }
@@ -323,7 +323,7 @@ static void Mbench_resize(State& state)
         state.ResumeTiming();
 
         v.resize(n);
-        ClobberMemory();
+        DoNotOptimize(v.data());
     }
     state.SetComplexityN(N);
 }
@@ -347,6 +347,7 @@ static void Mbench_swap(State& state)
 
     for(auto _ : state)
     {
+        DoNotOptimize(v.data());
         v.swap(w);
         ClobberMemory();
     }

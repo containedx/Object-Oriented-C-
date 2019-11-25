@@ -80,7 +80,7 @@ static void Sbench_clear(State& state)
         state.ResumeTiming();
 
         u.clear();
-        ClobberMemory();
+        DoNotOptimize(u);
     }
     state.SetComplexityN(N);
 }
@@ -142,6 +142,7 @@ static void Sbench_swap(State& state)
     }
     for(auto _: state)
     {
+        DoNotOptimize(u);
         u.swap(w);
         ClobberMemory();
     }
@@ -255,7 +256,7 @@ static void Sbench_reserve(State& state)
         state.ResumeTiming();
 
         u.reserve(num);
-        ClobberMemory();
+        DoNotOptimize(u);
     }
     state.SetComplexityN(N);
 }
