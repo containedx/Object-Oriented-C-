@@ -3,6 +3,21 @@
 
 ###### assigned containers: vector, map, unordered_multiset 
 
+I have measured performance of methods in mentioned above containers. 
+My results are listed below. 
+Raw output is avaiable in directory 'output'.
+
+Hardware: 
+4xintelcorei5
+10GB RAM
+
+expected results come from cppreference.com. 
+Most of my results are compatibile with them. 
+Plots show some noises, which may be affected by small range.
+
+Running benchmarks in Release showed definitely shorter times of evaluated functions.  
+I used 'escape functions' to prevent values or expressions from being optimized away.
+DoNotOptimize() forces value to be stored  and ClobberMemory() forces to perform all pending writes to memory.
 
 ## MAP
 
