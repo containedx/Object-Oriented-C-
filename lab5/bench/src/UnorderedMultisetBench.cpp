@@ -8,7 +8,7 @@ using namespace std;
     count, find, equal_range,
     rehash, reserve
  */
-
+/*
 static void Sbench_empty(State& state)
 {
     auto N = state.range(0);
@@ -193,7 +193,7 @@ static void Sbench_find(State& state)
     state.SetComplexityN(N);
 }
 BENCHMARK(Sbench_find)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
-
+*/
 static void Sbench_equalrange(State& state)
 {
     auto N = state.range(0);
@@ -206,15 +206,13 @@ static void Sbench_equalrange(State& state)
     }
     for(auto _: state)
     {
-        state.PauseTiming();
         int num = rand()%N;
-        state.ResumeTiming();
 
         DoNotOptimize(u.equal_range(A[num]));
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Sbench_equalrange)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Sbench_equalrange)->RangeMultiplier(2)->Range(1, 1<<20)->Complexity();
 
 static void Sbench_rehash(State& state)
 {
@@ -228,16 +226,14 @@ static void Sbench_rehash(State& state)
     }
     for(auto _: state)
     {
-        state.PauseTiming();
         int num = rand()%10;
-        state.ResumeTiming();
 
         u.rehash(num);
         ClobberMemory();
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Sbench_rehash)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Sbench_rehash)->RangeMultiplier(2)->Range(1, 1<<22)->Complexity();
 
 static void Sbench_reserve(State& state)
 {
@@ -251,13 +247,11 @@ static void Sbench_reserve(State& state)
     }
     for(auto _: state)
     {
-        state.PauseTiming();
         int num = rand()%10;
-        state.ResumeTiming();
 
         u.reserve(num);
         DoNotOptimize(u);
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Sbench_reserve)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Sbench_reserve)->RangeMultiplier(2)->Range(1, 1<<22)->Complexity();

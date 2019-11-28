@@ -12,7 +12,8 @@ Hardware:
 10GB RAM
 
 expected results come from cppreference.com. 
-Most of my results are compatibile with them. 
+Most of my results are compatibile with them.
+( update: I changed range to (1,1<<20) in some benchmarks which resulted in better outputs -> so bad results were also affected by too small range)
 Plots show some noises, which may be affected by small range.
 
 Running benchmarks in Release showed definitely shorter times of evaluated functions.  
@@ -218,7 +219,7 @@ my results: O(1)
 
 expected:  O(n)
 
-my results: O(1)
+my results: O(lgN)
 
 ![](output/PLOTS/vector_shrink.png)
 ![](output/PLOTS/RELEASE_vector_shrink.png)
@@ -236,7 +237,7 @@ my results: O(1)
 
 expected: O(n)
 
-my results: O(1)
+my results: O(nlgN)
 
 ![](output/PLOTS/vector_insert.png)
 ![](output/PLOTS/RELEASE_vector_insert.png)
@@ -245,7 +246,7 @@ my results: O(1)
 
 expected: O(n)
 
-my results: O(1)
+my results: O(nlgN)
 
 ![](output/PLOTS/vector_erase.png)
 ![](output/PLOTS/RELEASE_vector_erase.png)
@@ -383,7 +384,7 @@ my results: O(1)
 
 expected: linear O(n)
 
-my results: O(1)
+my results: O(NlgN)
 
 ![](output/PLOTS/unorderedmultiset_equalrange.png)
 ![](output/PLOTS/RELEASE_unorderedmultiset_equalrange.png)

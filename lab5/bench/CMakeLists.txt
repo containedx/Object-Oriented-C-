@@ -1,5 +1,5 @@
 set(BENCH_HEADERS include/BenchIncludes.h)
-set(BENCH_SOURCES src/VectorBench.cpp)
+set(BENCH_SOURCES src/UnorderedMultisetBench.cpp)
 #src/SmallBench.cpp src/MediumBench.cpp src/LargeBench.cpp
 #src/VectorBench.cpp src/MapBench.cpp src/UnorderedMultisetBench.cpp
 # src/VectorBenchMedium.cpp src/UnorderedMultisetBenchMedium.cpp src/MapBenchMedium.cpp

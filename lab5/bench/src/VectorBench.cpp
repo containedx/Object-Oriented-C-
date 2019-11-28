@@ -8,7 +8,7 @@ using namespace std;
  at, operator[], front, back, data,
     empty, size, max_size, reserve, capacity, shrink_to_fit,
     clear, insert, erase, push_back, pop_back, resize, swap
- */
+*/
 
 static void Sbench_at(State& state)
 {
@@ -43,7 +43,7 @@ static void Sbench_operator(State& state)
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Sbench_operator)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Sbench_operator)->RangeMultiplier(2)->Range(1, 1024 )->Complexity();
 
 static void Sbench_front(State& state)
 {
@@ -209,7 +209,7 @@ static void Sbench_shrink(State& state)
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Sbench_shrink)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Sbench_shrink)->RangeMultiplier(2)->Range(1, 1<<20)->Complexity();
 
 static void Sbench_clear(State& state)
 {
@@ -235,7 +235,7 @@ static void Sbench_clear(State& state)
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Sbench_clear)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Sbench_clear)->RangeMultiplier(2)->Range(1, 1<<20)->Complexity();
 
 static void Sbench_insert(State& state)
 {
@@ -253,7 +253,7 @@ static void Sbench_insert(State& state)
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Sbench_insert)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Sbench_insert)->RangeMultiplier(2)->Range(1, 1<<20)->Complexity();
 
 static void Sbench_erase(State& state)
 {
@@ -279,7 +279,7 @@ static void Sbench_erase(State& state)
     }
     state.SetComplexityN(N);
 }
-BENCHMARK(Sbench_erase)->RangeMultiplier(2)->Range(1, 1024)->Complexity();
+BENCHMARK(Sbench_erase)->RangeMultiplier(2)->Range(1, 1<<20)->Complexity();
 
 static void Sbench_pushback(State& state)
 {
