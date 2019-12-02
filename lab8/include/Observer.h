@@ -5,9 +5,7 @@
 class Observer {
 public:
 
-    void remember(std::string question, std::string answer);
-    std::string answer(std::string question) const;
+    virtual void remember(std::string question, std::string answer) = 0;
+    virtual std::string answer(std::string question) const = 0;
 
-private:
-    std::map<std::string, std::string> answers;
 };

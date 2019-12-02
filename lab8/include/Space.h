@@ -7,10 +7,7 @@
 class Space {
 public:
 
-    void create(unsigned int dimensions);
-    unsigned int dimensions() const;
+    virtual void create(unsigned int dimensions) = 0;
+    virtual unsigned int dimensions() const = 0;
 
-private:
-    unsigned int dimensionsCount;
-    std::vector<Point> points;
 };
