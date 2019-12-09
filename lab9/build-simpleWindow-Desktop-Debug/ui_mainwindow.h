@@ -17,6 +17,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -29,6 +30,7 @@ public:
     QPushButton *pushButton;
     QLineEdit *lineEdit;
     QDateEdit *dateEdit;
+    QTextBrowser *textBrowser;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -55,7 +57,7 @@ public:
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setEnabled(true);
-        pushButton->setGeometry(QRect(50, 30, 161, 91));
+        pushButton->setGeometry(QRect(20, 100, 161, 91));
         QPalette palette1;
         QBrush brush2(QColor(192, 207, 233, 255));
         brush2.setStyle(Qt::SolidPattern);
@@ -106,6 +108,9 @@ public:
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
         dateEdit->setGeometry(QRect(280, 0, 112, 31));
         dateEdit->setDateTime(QDateTime(QDate(2019, 12, 9), QTime(0, 0, 0)));
+        textBrowser = new QTextBrowser(centralWidget);
+        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        textBrowser->setGeometry(QRect(60, 10, 131, 61));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));

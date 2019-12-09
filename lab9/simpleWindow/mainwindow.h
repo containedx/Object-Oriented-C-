@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QApplication>
+#include "displacement.h"
+#include "speed.h"
+#include "acceleration.h"
 
 namespace Ui {
 class MainWindow;

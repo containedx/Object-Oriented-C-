@@ -5,6 +5,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    //displacement = new Displacement(this);
+
+    //connect(displacement, SIGNAL(changed(double)))
+
     ui->setupUi(this);
 }
 
@@ -18,6 +22,11 @@ void MainWindow::on_pushButton_clicked()
     if(ui->lineEdit->text()=="XD")
     {
         ui->lineEdit->setText(":>");
+        ui->textBrowser->setText("");
     }
-    else ui->lineEdit->setText("XD");
+    else
+    {
+        ui->lineEdit->setText("XD");
+        ui->textBrowser->setText("pomelo");
+    }
 }

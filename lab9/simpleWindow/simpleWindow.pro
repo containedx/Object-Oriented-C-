@@ -26,10 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    speed.cpp \
+    displacement.cpp \
+    acceleration.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    speed.h \
+    displacement.h \
+    acceleration.h
 
 FORMS += \
         mainwindow.ui

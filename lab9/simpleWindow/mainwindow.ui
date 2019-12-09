@@ -84,8 +84,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>30</y>
+      <x>20</x>
+      <y>100</y>
       <width>161</width>
       <height>91</height>
      </rect>
@@ -244,6 +244,16 @@
       <month>12</month>
       <day>9</day>
      </datetime>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>10</y>
+      <width>131</width>
+      <height>61</height>
+     </rect>
     </property>
    </widget>
   </widget>

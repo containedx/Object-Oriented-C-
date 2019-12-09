@@ -53,10 +53,22 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../simpleWindow/main.cpp \
-		../simpleWindow/mainwindow.cpp moc_mainwindow.cpp
+		../simpleWindow/mainwindow.cpp \
+		../simpleWindow/speed.cpp \
+		../simpleWindow/displacement.cpp \
+		../simpleWindow/acceleration.cpp moc_mainwindow.cpp \
+		moc_speed.cpp \
+		moc_displacement.cpp \
+		moc_acceleration.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		speed.o \
+		displacement.o \
+		acceleration.o \
+		moc_mainwindow.o \
+		moc_speed.o \
+		moc_displacement.o \
+		moc_acceleration.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -118,6 +130,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		../simpleWindow/.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -137,8 +150,14 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../simpleWindow/simpleWindow.pro ../simpleWindow/mainwindow.h ../simpleWindow/main.cpp \
-		../simpleWindow/mainwindow.cpp
+		../simpleWindow/simpleWindow.pro ../simpleWindow/mainwindow.h \
+		../simpleWindow/speed.h \
+		../simpleWindow/displacement.h \
+		../simpleWindow/acceleration.h ../simpleWindow/main.cpp \
+		../simpleWindow/mainwindow.cpp \
+		../simpleWindow/speed.cpp \
+		../simpleWindow/displacement.cpp \
+		../simpleWindow/acceleration.cpp
 QMAKE_TARGET  = simpleWindow
 DESTDIR       = 
 TARGET        = simpleWindow
@@ -211,6 +230,7 @@ Makefile: ../simpleWindow/simpleWindow.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -296,6 +316,7 @@ Makefile: ../simpleWindow/simpleWindow.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -334,8 +355,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../simpleWindow/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../simpleWindow/main.cpp ../simpleWindow/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../simpleWindow/mainwindow.h ../simpleWindow/speed.h ../simpleWindow/displacement.h ../simpleWindow/acceleration.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../simpleWindow/main.cpp ../simpleWindow/mainwindow.cpp ../simpleWindow/speed.cpp ../simpleWindow/displacement.cpp ../simpleWindow/acceleration.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../simpleWindow/mainwindow.ui $(DISTDIR)/
 
 
@@ -368,13 +389,28 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_speed.cpp moc_displacement.cpp moc_acceleration.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_speed.cpp moc_displacement.cpp moc_acceleration.cpp
 moc_mainwindow.cpp: ../simpleWindow/mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/student/oop_2019_g2_kinga_zawarty/lab9/build-simpleWindow-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/oop_2019_g2_kinga_zawarty/lab9/simpleWindow -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../simpleWindow/mainwindow.h -o moc_mainwindow.cpp
+
+moc_speed.cpp: ../simpleWindow/speed.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/student/oop_2019_g2_kinga_zawarty/lab9/build-simpleWindow-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/oop_2019_g2_kinga_zawarty/lab9/simpleWindow -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../simpleWindow/speed.h -o moc_speed.cpp
+
+moc_displacement.cpp: ../simpleWindow/displacement.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/student/oop_2019_g2_kinga_zawarty/lab9/build-simpleWindow-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/oop_2019_g2_kinga_zawarty/lab9/simpleWindow -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../simpleWindow/displacement.h -o moc_displacement.cpp
+
+moc_acceleration.cpp: ../simpleWindow/acceleration.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/student/oop_2019_g2_kinga_zawarty/lab9/build-simpleWindow-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/oop_2019_g2_kinga_zawarty/lab9/simpleWindow -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../simpleWindow/acceleration.h -o moc_acceleration.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -404,8 +440,26 @@ mainwindow.o: ../simpleWindow/mainwindow.cpp ../simpleWindow/mainwindow.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../simpleWindow/mainwindow.cpp
 
+speed.o: ../simpleWindow/speed.cpp ../simpleWindow/speed.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o speed.o ../simpleWindow/speed.cpp
+
+displacement.o: ../simpleWindow/displacement.cpp ../simpleWindow/displacement.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o displacement.o ../simpleWindow/displacement.cpp
+
+acceleration.o: ../simpleWindow/acceleration.cpp ../simpleWindow/acceleration.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o acceleration.o ../simpleWindow/acceleration.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_speed.o: moc_speed.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_speed.o moc_speed.cpp
+
+moc_displacement.o: moc_displacement.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_displacement.o moc_displacement.cpp
+
+moc_acceleration.o: moc_acceleration.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_acceleration.o moc_acceleration.cpp
 
 ####### Install
 
