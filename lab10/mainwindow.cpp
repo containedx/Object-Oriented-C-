@@ -7,6 +7,7 @@
 #include <QDebug>
 
 #include <QStateMachine>
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,30 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // TODO: Create state machine
     auto stateMachine = new QStateMachine(this);
 
-
-    /*
-    // TODO: Create states
-    auto greenState = new QState(stateMachine);
-    auto yellowState = new QState(stateMachine);
-    auto redState = new QState(stateMachine);
-    auto logState = new QState(stateMachine);
-    auto enteredState = new QState(stateMachine);
-    // TODO: Set appropriate 'assignProperty'
-    greenState->assignProperty(ui->pbToggle, "text", "GREEN");
-    yellowState->assignProperty(ui->pbToggle, "text", "YELLOW");
-    redState->assignProperty(ui->pbToggle, "text", "RED");
-    // TODO: Set state transitions including this class events and slots
-    greenState->addTransition(ui->pbToggle, SIGNAL(clicked()), redState); //co ma byc triggerem
-    redState->addTransition(ui->pbToggle, SIGNAL(clicked()), yellowState);
-    yellowState->addTransition(ui->pbToggle, SIGNAL(clicked()), logState);
-    logState->addTransition(ui->pbToggle, SIGNAL(clicked()), greenState);
-    connect(logState, SIGNAL(entered()), this, SLOT(log())); //wywolanie funkcji log po wejsciu do stanu logState
-    stateMachine->setInitialState(greenState);
-    stateMachine->start();
-    */
     auto unlockedState = new QState(stateMachine);
     auto lockedState = new QState(stateMachine);
 
@@ -112,21 +91,32 @@ MainWindow::~MainWindow()
 
 void MainWindow::open()
 {
-    qDebug() << "I am inside open()... :3 " ;
-    // TODO: Show file dialog
-    // TODO: Open selected file
-    // TODO: Emit 'error' if opening failed
-    // TODO: Set text and emit 'opened' if suceeded
+    this->fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "/home/student", tr("Text files(*.txt)") );
+    QFile file(this->fileName);
+
+    if(!file.open(QIODevice::ReadWrite)) {
+        emit error();
+        return;
+    }
+
+    QTextStream in(&file);
+    QString fileText = in.readAll();
+    ui->teText->setText(fileText);
     emit opened();
-    // TODO: Save file name in 'fileName'
 }
 
 void MainWindow::save()
 {
-    qDebug() << "I am inside save()... :3 " ;
-    // TODO: Open 'fileName' for writing
-    // TODO: Emit 'error' if opening failed
-    // TODO: Save file and emit 'saved' if succeeded
+    QFile file(this->fileName);
+    if(!file.open(QIODevice::ReadWrite)) {
+        emit error();
+        return;
+    }
+
+    QString fileText = ui->teText->toPlainText();
+    QTextStream out(&file);
+    out << fileText;
+    file.flush();
     emit saved();
 }
 
