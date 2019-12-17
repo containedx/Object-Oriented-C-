@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent) :
     auto unlockedState = new QState(stateMachine);
     auto lockedState = new QState(stateMachine);
 
+    auto historyState = new QHistoryState(unlockedState);
+
     auto startupState = new QState(unlockedState);
     auto openState = new QState(unlockedState);
     auto viewState = new QState(unlockedState);
@@ -58,7 +60,8 @@ MainWindow::MainWindow(QWidget *parent) :
     errorState->assignProperty(ui->teText, "placeholderText", "Error ocured. Open file to start editing...");
 
     unlockedState->addTransition(ui->pbToggle, SIGNAL(clicked()), lockedState);
-    lockedState->addTransition(ui->pbToggle, SIGNAL(clicked()), unlockedState);
+    historyState->setDefaultState(unlockedState);
+    lockedState->addTransition(ui->pbToggle, SIGNAL(clicked()), historyState);
 
     startupState->addTransition(ui->pbOpen, SIGNAL(clicked()), openState);
     connect(enteredState, SIGNAL(entered()), this, SLOT(open()));
