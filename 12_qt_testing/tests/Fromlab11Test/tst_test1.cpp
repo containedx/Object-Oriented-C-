@@ -17,8 +17,6 @@ private slots:
 
 };
 
-  //signal spy czy sygnaly wyemitowane i spawdzic argymenty
-  //set property i property
 
 
 void Test1::DisplacementTest()
@@ -39,6 +37,9 @@ void Test1::DisplacementTest()
     QCOMPARE(x, D1.get());
 
     QCOMPARE( 2, spy.count());
+
+    D1.setProperty("value", 150);
+    QCOMPARE(D1.property("value"), 150);
 }
 
 void Test1::SpeedTest()
