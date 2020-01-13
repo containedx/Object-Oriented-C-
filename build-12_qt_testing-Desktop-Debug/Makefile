@@ -34,7 +34,8 @@ DISTDIR = /home/student/oop_2019_g2_kinga_zawarty/build-12_qt_testing-Desktop-De
 SUBTARGETS    =  \
 		sub-cli \
 		sub-utils \
-		sub-tests
+		sub-tests \
+		sub-fromlab11
 
 
 sub-cli-qmake_all:  FORCE
@@ -112,6 +113,31 @@ sub-tests-install_subtargets: FORCE
 sub-tests-uninstall_subtargets: FORCE
 	@test -d tests/ || mkdir -p tests/
 	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-fromlab11-qmake_all:  FORCE
+	@test -d fromlab11/ || mkdir -p fromlab11/
+	cd fromlab11/ && $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/fromlab11/fromlab11.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
+	cd fromlab11/ && $(MAKE) -f Makefile qmake_all
+sub-fromlab11: FORCE
+	@test -d fromlab11/ || mkdir -p fromlab11/
+	cd fromlab11/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/fromlab11/fromlab11.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
+sub-fromlab11-make_first: FORCE
+	@test -d fromlab11/ || mkdir -p fromlab11/
+	cd fromlab11/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/fromlab11/fromlab11.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-fromlab11-all: FORCE
+	@test -d fromlab11/ || mkdir -p fromlab11/
+	cd fromlab11/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/fromlab11/fromlab11.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-fromlab11-clean: FORCE
+	@test -d fromlab11/ || mkdir -p fromlab11/
+	cd fromlab11/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/fromlab11/fromlab11.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-fromlab11-distclean: FORCE
+	@test -d fromlab11/ || mkdir -p fromlab11/
+	cd fromlab11/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/fromlab11/fromlab11.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-fromlab11-install_subtargets: FORCE
+	@test -d fromlab11/ || mkdir -p fromlab11/
+	cd fromlab11/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/fromlab11/fromlab11.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-fromlab11-uninstall_subtargets: FORCE
+	@test -d fromlab11/ || mkdir -p fromlab11/
+	cd fromlab11/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/fromlab11/fromlab11.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
 
 Makefile: ../12_qt_testing/12_qt_testing.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -174,6 +200,7 @@ Makefile: ../12_qt_testing/12_qt_testing.pro /usr/lib/x86_64-linux-gnu/qt5/mkspe
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -250,6 +277,7 @@ Makefile: ../12_qt_testing/12_qt_testing.pro /usr/lib/x86_64-linux-gnu/qt5/mkspe
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -267,16 +295,16 @@ Makefile: ../12_qt_testing/12_qt_testing.pro /usr/lib/x86_64-linux-gnu/qt5/mkspe
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../12_qt_testing/12_qt_testing.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
-qmake_all: sub-cli-qmake_all sub-utils-qmake_all sub-tests-qmake_all FORCE
+qmake_all: sub-cli-qmake_all sub-utils-qmake_all sub-tests-qmake_all sub-fromlab11-qmake_all FORCE
 
-make_first: sub-cli-make_first sub-utils-make_first sub-tests-make_first  FORCE
-all: sub-cli-all sub-utils-all sub-tests-all  FORCE
-clean: sub-cli-clean sub-utils-clean sub-tests-clean  FORCE
-distclean: sub-cli-distclean sub-utils-distclean sub-tests-distclean  FORCE
+make_first: sub-cli-make_first sub-utils-make_first sub-tests-make_first sub-fromlab11-make_first  FORCE
+all: sub-cli-all sub-utils-all sub-tests-all sub-fromlab11-all  FORCE
+clean: sub-cli-clean sub-utils-clean sub-tests-clean sub-fromlab11-clean  FORCE
+distclean: sub-cli-distclean sub-utils-distclean sub-tests-distclean sub-fromlab11-distclean  FORCE
 	-$(DEL_FILE) Makefile
 	-$(DEL_FILE) .qmake.stash
-install_subtargets: sub-cli-install_subtargets sub-utils-install_subtargets sub-tests-install_subtargets FORCE
-uninstall_subtargets: sub-cli-uninstall_subtargets sub-utils-uninstall_subtargets sub-tests-uninstall_subtargets FORCE
+install_subtargets: sub-cli-install_subtargets sub-utils-install_subtargets sub-tests-install_subtargets sub-fromlab11-install_subtargets FORCE
+uninstall_subtargets: sub-cli-uninstall_subtargets sub-utils-uninstall_subtargets sub-tests-uninstall_subtargets sub-fromlab11-uninstall_subtargets FORCE
 
 sub-cli-check:
 	@test -d cli/ || mkdir -p cli/
@@ -287,7 +315,10 @@ sub-utils-check:
 sub-tests-check:
 	@test -d tests/ || mkdir -p tests/
 	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
-check: sub-cli-check sub-utils-check sub-tests-check
+sub-fromlab11-check:
+	@test -d fromlab11/ || mkdir -p fromlab11/
+	cd fromlab11/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/fromlab11/fromlab11.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
+check: sub-cli-check sub-utils-check sub-tests-check sub-fromlab11-check
 
 sub-cli-benchmark:
 	@test -d cli/ || mkdir -p cli/
@@ -298,7 +329,10 @@ sub-utils-benchmark:
 sub-tests-benchmark:
 	@test -d tests/ || mkdir -p tests/
 	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
-benchmark: sub-cli-benchmark sub-utils-benchmark sub-tests-benchmark
+sub-fromlab11-benchmark:
+	@test -d fromlab11/ || mkdir -p fromlab11/
+	cd fromlab11/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/fromlab11/fromlab11.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
+benchmark: sub-cli-benchmark sub-utils-benchmark sub-tests-benchmark sub-fromlab11-benchmark
 install:install_subtargets  FORCE
 
 uninstall: uninstall_subtargets FORCE
@@ -308,9 +342,9 @@ FORCE:
 dist: distdir FORCE
 	(cd `dirname $(DISTDIR)` && $(TAR) $(DISTNAME).tar $(DISTNAME) && $(COMPRESS) $(DISTNAME).tar) && $(MOVE) `dirname $(DISTDIR)`/$(DISTNAME).tar.gz . && $(DEL_FILE) -r $(DISTDIR)
 
-distdir: sub-cli-distdir sub-utils-distdir sub-tests-distdir FORCE
+distdir: sub-cli-distdir sub-utils-distdir sub-tests-distdir sub-fromlab11-distdir FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
-	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/sanitize.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/gcc-base.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/gcc-base-unix.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-base.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-unix.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/qconfig.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_core.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_core_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_devicediscovery_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_edid_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_egl_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_fb_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_fontdatabase_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_glx_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_theme_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_vulkan_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_NetworkManagerQt.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_functions.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qml_debug.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/warn_on.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qmake_use.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/file_copies.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/testcase_targets.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf ../12_qt_testing/12_qt_testing.pro $(DISTDIR)/
+	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/sanitize.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/gcc-base.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/gcc-base-unix.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-base.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-unix.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/qconfig.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_core.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_core_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_devicediscovery_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_edid_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_egl_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_fb_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_fontdatabase_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_glx_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_theme_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_vulkan_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_NetworkManagerQt.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_functions.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf .qmake.stash /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qml_debug.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/warn_on.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qmake_use.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/file_copies.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/testcase_targets.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf ../12_qt_testing/12_qt_testing.pro $(DISTDIR)/
 
 sub-cli-distdir: FORCE
 	@test -d cli/ || mkdir -p cli/
@@ -323,4 +357,8 @@ sub-utils-distdir: FORCE
 sub-tests-distdir: FORCE
 	@test -d tests/ || mkdir -p tests/
 	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/tests
+
+sub-fromlab11-distdir: FORCE
+	@test -d fromlab11/ || mkdir -p fromlab11/
+	cd fromlab11/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/fromlab11/fromlab11.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/fromlab11
 

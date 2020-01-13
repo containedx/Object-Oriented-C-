@@ -3,5 +3,6 @@ TEMPLATE = subdirs
 SUBDIRS += \
     cli \
     utils \
-    tests
+    tests \
+    fromlab11
 

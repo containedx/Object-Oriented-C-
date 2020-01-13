@@ -32,7 +32,8 @@ COMPRESS      = gzip -9f
 DISTNAME      = tests1.0.0
 DISTDIR = /home/student/oop_2019_g2_kinga_zawarty/build-12_qt_testing-Desktop-Debug/tests/.tmp/tests1.0.0
 SUBTARGETS    =  \
-		sub-demo_test
+		sub-demo_test \
+		sub-Fromlab11Test
 
 
 sub-demo_test-qmake_all:  FORCE
@@ -60,6 +61,31 @@ sub-demo_test-install_subtargets: FORCE
 sub-demo_test-uninstall_subtargets: FORCE
 	@test -d demo_test/ || mkdir -p demo_test/
 	cd demo_test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/demo_test/demo_test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-Fromlab11Test-qmake_all:  FORCE
+	@test -d Fromlab11Test/ || mkdir -p Fromlab11Test/
+	cd Fromlab11Test/ && $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/Fromlab11Test/Fromlab11Test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
+	cd Fromlab11Test/ && $(MAKE) -f Makefile qmake_all
+sub-Fromlab11Test: FORCE
+	@test -d Fromlab11Test/ || mkdir -p Fromlab11Test/
+	cd Fromlab11Test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/Fromlab11Test/Fromlab11Test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
+sub-Fromlab11Test-make_first: FORCE
+	@test -d Fromlab11Test/ || mkdir -p Fromlab11Test/
+	cd Fromlab11Test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/Fromlab11Test/Fromlab11Test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-Fromlab11Test-all: FORCE
+	@test -d Fromlab11Test/ || mkdir -p Fromlab11Test/
+	cd Fromlab11Test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/Fromlab11Test/Fromlab11Test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-Fromlab11Test-clean: FORCE
+	@test -d Fromlab11Test/ || mkdir -p Fromlab11Test/
+	cd Fromlab11Test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/Fromlab11Test/Fromlab11Test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-Fromlab11Test-distclean: FORCE
+	@test -d Fromlab11Test/ || mkdir -p Fromlab11Test/
+	cd Fromlab11Test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/Fromlab11Test/Fromlab11Test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-Fromlab11Test-install_subtargets: FORCE
+	@test -d Fromlab11Test/ || mkdir -p Fromlab11Test/
+	cd Fromlab11Test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/Fromlab11Test/Fromlab11Test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-Fromlab11Test-uninstall_subtargets: FORCE
+	@test -d Fromlab11Test/ || mkdir -p Fromlab11Test/
+	cd Fromlab11Test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/Fromlab11Test/Fromlab11Test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
 
 Makefile: ../../12_qt_testing/tests/tests.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -217,25 +243,31 @@ Makefile: ../../12_qt_testing/tests/tests.pro /usr/lib/x86_64-linux-gnu/qt5/mksp
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../../12_qt_testing/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
-qmake_all: sub-demo_test-qmake_all FORCE
+qmake_all: sub-demo_test-qmake_all sub-Fromlab11Test-qmake_all FORCE
 
-make_first: sub-demo_test-make_first  FORCE
-all: sub-demo_test-all  FORCE
-clean: sub-demo_test-clean  FORCE
-distclean: sub-demo_test-distclean  FORCE
+make_first: sub-demo_test-make_first sub-Fromlab11Test-make_first  FORCE
+all: sub-demo_test-all sub-Fromlab11Test-all  FORCE
+clean: sub-demo_test-clean sub-Fromlab11Test-clean  FORCE
+distclean: sub-demo_test-distclean sub-Fromlab11Test-distclean  FORCE
 	-$(DEL_FILE) Makefile
-install_subtargets: sub-demo_test-install_subtargets FORCE
-uninstall_subtargets: sub-demo_test-uninstall_subtargets FORCE
+install_subtargets: sub-demo_test-install_subtargets sub-Fromlab11Test-install_subtargets FORCE
+uninstall_subtargets: sub-demo_test-uninstall_subtargets sub-Fromlab11Test-uninstall_subtargets FORCE
 
 sub-demo_test-check:
 	@test -d demo_test/ || mkdir -p demo_test/
 	cd demo_test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/demo_test/demo_test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
-check: sub-demo_test-check
+sub-Fromlab11Test-check:
+	@test -d Fromlab11Test/ || mkdir -p Fromlab11Test/
+	cd Fromlab11Test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/Fromlab11Test/Fromlab11Test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
+check: sub-demo_test-check sub-Fromlab11Test-check
 
 sub-demo_test-benchmark:
 	@test -d demo_test/ || mkdir -p demo_test/
 	cd demo_test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/demo_test/demo_test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
-benchmark: sub-demo_test-benchmark
+sub-Fromlab11Test-benchmark:
+	@test -d Fromlab11Test/ || mkdir -p Fromlab11Test/
+	cd Fromlab11Test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/Fromlab11Test/Fromlab11Test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
+benchmark: sub-demo_test-benchmark sub-Fromlab11Test-benchmark
 install:install_subtargets  FORCE
 
 uninstall: uninstall_subtargets FORCE
@@ -245,11 +277,15 @@ FORCE:
 dist: distdir FORCE
 	(cd `dirname $(DISTDIR)` && $(TAR) $(DISTNAME).tar $(DISTNAME) && $(COMPRESS) $(DISTNAME).tar) && $(MOVE) `dirname $(DISTDIR)`/$(DISTNAME).tar.gz . && $(DEL_FILE) -r $(DISTDIR)
 
-distdir: sub-demo_test-distdir FORCE
+distdir: sub-demo_test-distdir sub-Fromlab11Test-distdir FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/sanitize.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/gcc-base.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/gcc-base-unix.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-base.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-unix.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/qconfig.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_core.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_core_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_devicediscovery_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_edid_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_egl_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_fb_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_fontdatabase_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_glx_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_theme_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_vulkan_support_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml_private.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_NetworkManagerQt.pri /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_functions.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf ../.qmake.stash /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qml_debug.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/warn_on.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qmake_use.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/file_copies.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/testcase_targets.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf ../../12_qt_testing/tests/tests.pro $(DISTDIR)/
 
 sub-demo_test-distdir: FORCE
 	@test -d demo_test/ || mkdir -p demo_test/
 	cd demo_test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/demo_test/demo_test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/demo_test
+
+sub-Fromlab11Test-distdir: FORCE
+	@test -d Fromlab11Test/ || mkdir -p Fromlab11Test/
+	cd Fromlab11Test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/student/oop_2019_g2_kinga_zawarty/12_qt_testing/tests/Fromlab11Test/Fromlab11Test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/Fromlab11Test
 

@@ -1,0 +1,12 @@
+#ifndef FROMLAB11_GLOBAL_H
+#define FROMLAB11_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(FROMLAB11_LIBRARY)
+#  define FROMLAB11SHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define FROMLAB11SHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // FROMLAB11_GLOBAL_H

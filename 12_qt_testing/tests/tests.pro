@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    demo_test
+    demo_test \
+    Fromlab11Test
